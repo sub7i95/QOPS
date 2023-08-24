@@ -14,8 +14,18 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <script src="https://kit.fontawesome.com/8aea7295a5.js" crossorigin="anonymous"></script>
 
+    
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <style>
+        .card {
+    -webkit-box-shadow: 0 0.12rem 0.2rem rgba(0,0,0,0.07);
+    box-shadow: 0 0.12rem 0.2rem rgba(0,0,0,0.09) !important;
+    border: 1px solid #fff;
+    border-radius: 10px;
+}
+    </style>
 </head>
 <body>
     <div id="app">
@@ -69,10 +79,10 @@
                                     <a class="nav-link" href="Modules"><i class="fa-solid fa-suitcase"></i> {{ __('Modules') }}</a>
                             </li>
                             <li class="nav-item">
-                                    <a class="nav-link" href="Groups"><i class="fa-solid fa-object-group"></i> {{ __('Groups') }}</a>
+                                    <a class="nav-link" href="groups"><i class="fa-solid fa-object-group"></i> {{ __('Groups') }}</a>
                             </li>
                             <li class="nav-item">
-                                    <a class="nav-link" href="Analysts"><i class="fa-solid fa-users"></i> {{ __('Analysts') }}</a>
+                                    <a class="nav-link" href="analysts"><i class="fa-solid fa-users"></i> {{ __('Analysts') }}</a>
                             </li>
                             <li class="nav-item">
                                     <a class="nav-link" href="users"><i class="fa-solid fa-clipboard-user"></i> {{ __('Users') }}</a>
@@ -121,7 +131,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="p-4">
             @yield('content')
         </main>
     </div>
