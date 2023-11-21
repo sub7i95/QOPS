@@ -22,36 +22,36 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users');
-
 Route::get('/users/create', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
-
 Route::post('/users/create', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
-
 Route::get('/users/{id}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
-
 Route::post('/users/{id}/edit', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
-
 Route::post('/users/{id}/delete', [App\Http\Controllers\UserController::class, 'delete'])->name('users.delete');
 
 Route::get('/analysts', [App\Http\Controllers\AnalystController::class, 'index'])->name('analysts');
-
 Route::get('/analysts/{id}/edit', [App\Http\Controllers\AnalystController::class, 'edit'])->name('analysts.edit');
-
 Route::post('/analysts/{id}/edit', [App\Http\Controllers\AnalystController::class, 'update'])->name('analysts.update');
-
 Route::get('/analysts/create', [App\Http\Controllers\AnalystController::class, 'create'])->name('analysts.create');
-
 Route::post('/analysts/create', [App\Http\Controllers\AnalystController::class, 'store'])->name('analysts.store');
 
 Route::get('/groups', [App\Http\Controllers\GroupController::class, 'index'])->name('groups');
-
 Route::get('/groups/create', [App\Http\Controllers\GroupController::class, 'create'])->name('groups.create');
-
 Route::post('/groups/create', [App\Http\Controllers\GroupController::class, 'store'])->name('groups.store');
-
 Route::get('/groups/{id}/edit', [App\Http\Controllers\GroupController::class, 'edit'])->name('groups.edit');
-
 Route::post('/groups/{id}/edit', [App\Http\Controllers\GroupController::class, 'update'])->name('groups.update');
+
+Route::get('/surveys', [App\Http\Controllers\SurveyController::class, 'index'])->name('surveys');
+Route::get('/surveys/create', [App\Http\Controllers\SurveyController::class, 'create'])->name('surveys.create');
+Route::post('/surveys/create', [App\Http\Controllers\SurveyController::class, 'store'])->name('surveys.store');
+Route::get('/surveys/{survey}/edit', [App\Http\Controllers\SurveyController::class, 'edit'])->name('surveys.edit');
+Route::post('/surveys/{id}/edit', [App\Http\Controllers\SurveyController::class, 'update'])->name('surveys.update');
+
+Route::get('/services', [App\Http\Controllers\ServiceController::class, 'index'])->name('services');
+Route::get('/services/create', [App\Http\Controllers\ServiceController::class, 'create'])->name('services.create');
+Route::post('/services/create', [App\Http\Controllers\ServiceController::class, 'store'])->name('services.store');
+Route::get('/services/{id}/edit', [App\Http\Controllers\ServiceController::class, 'show'])->name('services.show');
+Route::post('/services/{id}/edit', [App\Http\Controllers\ServiceController::class, 'update'])->name('services.update');
+
 
 
 

@@ -73,10 +73,10 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                    <a class="nav-link" href="Surveys"><i class="fa-solid fa-puzzle-piece"></i> {{ __('Surveys') }}</a>
+                                    <a class="nav-link" href="surveys"><i class="fa-solid fa-puzzle-piece"></i> {{ __('Surveys') }}</a>
                             </li>
                             <li class="nav-item">
-                                    <a class="nav-link" href="Modules"><i class="fa-solid fa-suitcase"></i> {{ __('Modules') }}</a>
+                                    <a class="nav-link" href="services"><i class="fa-solid fa-suitcase"></i> {{ __('Modules') }}</a>
                             </li>
                             <li class="nav-item">
                                     <a class="nav-link" href="groups"><i class="fa-solid fa-object-group"></i> {{ __('Groups') }}</a>
