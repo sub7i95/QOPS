@@ -24,13 +24,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users');
 Route::get('/users/create', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
 Route::post('/users/create', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
-Route::get('/users/{id}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
-Route::post('/users/{id}/edit', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
-Route::post('/users/{id}/delete', [App\Http\Controllers\UserController::class, 'delete'])->name('users.delete');
+Route::get('/users/{user}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
+Route::post('/users/{user}/edit', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
+Route::post('/users/{user}/delete', [App\Http\Controllers\UserController::class, 'delete'])->name('users.delete');
 
 Route::get('/analysts', [App\Http\Controllers\AnalystController::class, 'index'])->name('analysts');
-Route::get('/analysts/{id}/edit', [App\Http\Controllers\AnalystController::class, 'edit'])->name('analysts.edit');
-Route::post('/analysts/{id}/edit', [App\Http\Controllers\AnalystController::class, 'update'])->name('analysts.update');
+Route::get('/analysts/{analyst}/edit', [App\Http\Controllers\AnalystController::class, 'edit'])->name('analysts.edit');
+Route::post('/analysts/{analyst}/edit', [App\Http\Controllers\AnalystController::class, 'update'])->name('analysts.update');
 Route::get('/analysts/create', [App\Http\Controllers\AnalystController::class, 'create'])->name('analysts.create');
 Route::post('/analysts/create', [App\Http\Controllers\AnalystController::class, 'store'])->name('analysts.store');
 
@@ -51,8 +51,3 @@ Route::get('/services/create', [App\Http\Controllers\ServiceController::class, '
 Route::post('/services/create', [App\Http\Controllers\ServiceController::class, 'store'])->name('services.store');
 Route::get('/services/{id}/edit', [App\Http\Controllers\ServiceController::class, 'show'])->name('services.show');
 Route::post('/services/{id}/edit', [App\Http\Controllers\ServiceController::class, 'update'])->name('services.update');
-
-
-
-
-

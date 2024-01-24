@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
+@include('service.header')
 <div class="card">
   <div class="card-body">
 

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
+@include('group.header')
 <div class="card">
   <div class="card-body">
 <!-- BEGIN CONTENT PAGE -->

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
+@include('analyst.header')
     <div class="card">
         <div class="card-header">
             Create Analyst
@@ -54,7 +54,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="active">Status</label>
                         <div class="col-sm-8">
-                            <select class="form-control" name="active" id="active">
+                            <select class="form-select" name="active" id="active">
                                 <option value="1">Active</option>
                                 <option value="0">Inactive</option>
                             </select>
@@ -66,7 +66,7 @@
                 </div>                
                 <div class="row mt-2">
                     <div class="col">
-                        <a class="btn btn-secondary" href="/analysts">< Back</a>
+                        <a class="btn btn-secondary" href="/analysts"><i class="fa-solid fa-chevron-left me-1"></i> Back </a>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </div>

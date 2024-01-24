@@ -7,23 +7,36 @@ use App\Models\Analyst;
 
 class AnalystController extends Controller
 {
-    public function index()
+
+    public function __construct()
     {
-        return view('analyst.index')->with('analysts', Analyst::orderBy('name')->simplePaginate());
+        $this->middleware('auth');
     }
 
-    public function edit(string $id)
-    {
-        $analyst = Analyst::find($id);
 
+    public function index()
+    {
+        $analysts =Analyst::orderBy('name')
+        //->simplePaginate() /// removed this to use datatables JS in the html
+        ->get();
+
+        return view('analyst.index')
+        ->with('analysts', $analysts);
+    }
+
+
+    public function edit(Analyst $analyst)
+    {
         return view('analyst.edit')
         ->with('analyst', $analyst);
     }
+
 
     public function create()
     {
         return view('analyst.create');
     }
+
 
     public function store(Request $request)
     {
@@ -31,36 +44,33 @@ class AnalystController extends Controller
             'name'=> 'required|max:255',
             'location' => 'required|max:255',
             'email'     => 'required|email|max:255',
-            ]);
+        ]);
 
         $analyst = new Analyst;
         $analyst->name = $request->name;
         $analyst->location = $request->location;
-        $analyst->email = $request->email;
+        $analyst->email = \Str::lower( $request->email );
         $analyst->group = $request->group;
         $analyst->active = $request->active;
         $analyst->save();
 
-        return redirect("/analysts/".$analyst->id."/edit"); // Redirect back to the form
+        $request->session()->flash('success', 'Information was saved successfully.');
+        return redirect("/analysts/{$analyst->id}/edit"); // Redirect back to the form
 
-        return response( [ 
-            'ok'    => true, 
-            'data'  => $user 
-        ] , 201); 
     }
 
-    public function update(Request $request, string $id)
+
+    public function update(Request $request, Analyst $analyst)
     {
         $request->validate( [
             'name'=> 'required|max:255',
             'location' => 'required|max:255',
             'email'    => 'required|email|max:255',         
-            ]);
+        ]);
 
-        $analyst = Analyst::find($id);
         $analyst->name = $request->name;
         $analyst->location = $request->location;
-        $analyst->email = $request->email;
+        $analyst->email = \Str::lower( $request->email );
         $analyst->active = $request->active;
         $analyst->save();
 
@@ -68,9 +78,16 @@ class AnalystController extends Controller
 
         return redirect()->back(); // Redirect back to the form
 
-        return response( [ 
-            'ok'    => true, 
-            'data'  => $user 
-        ] , 200); 
     }
+
+
+    public function destroy( Analyst $analyst )
+    {
+        $analyst->destroy();
+        return redirect('/analysts');
+    }
+
+
+
+
 }

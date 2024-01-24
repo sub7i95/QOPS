@@ -1,16 +1,12 @@
 @extends('layouts.app')
 @section('content')
-
+@include('user.header')
     <div class="card">
         <div class="card-header">
             Create Username
         </div>
         <div class="card-body">
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
+
 
             <form name="form-user" id="form-user" class="form form-horizontal ajax-form-user" role="form" action="/users/create" method="POST">
                 @csrf
@@ -45,7 +41,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="role_id">Role</label>
                         <div class="col-sm-8">
-                            <select class="form-control" name="role_id" id="role_id">
+                            <select class="form-select" name="role_id" id="role_id">
                                 <option value="3">Agent</option>
                                 <option value="4">QA Analyst</option>
                                 <option value="5">QA Manager</option>
@@ -57,7 +53,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="active">Status</label>
                         <div class="col-sm-8">
-                            <select class="form-control" name="active" id="active">
+                            <select class="form-select" name="active" id="active">
                                 <option value="1">Active</option>
                                 <option value="0">Inactive</option>
                             </select>
@@ -69,7 +65,7 @@
                 </div>                
                 <div class="row mt-2">
                     <div class="col">
-                        <a class="btn btn-secondary" href="/users">< Back</a>
+                        <a class="btn btn-secondary" href="/users"><i class="fa-solid fa-chevron-left me-1"></i> Back </a>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </div>
@@ -77,7 +73,7 @@
         </div>
     </div>
 
-    @endsection
+@endsection
 
 @section('scripts')
 <script type="text/javascript">

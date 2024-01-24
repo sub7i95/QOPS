@@ -7,30 +7,31 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function index()
     {
         $users = User::select('users.*', 'roles.name as role')
         ->join('roles', 'roles.id', '=', 'users.role_id')
-        ->simplePaginate();
+        //->simplePaginate() /// removed this to use datatables JS in the html
+        ->get();
 
         return view('user.index')
         ->with('users', $users);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         return view('user.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
         $request->validate( [
@@ -43,43 +44,25 @@ class UserController extends Controller
         $user = new User;
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
-        $user->email = $request->email;
+        $user->email = \Str::lower( $request->email );
         $user->role_id = $request->role_id;
         $user->active = $request->active;
         $user->password = bcrypt($request->password);
         $user->save();
 
-        return redirect("/users/".$user->id."/edit"); // Redirect back to the form
+        return redirect("/users/{$user->id}/edit")->wiht('message', 'Saved');
 
-        return response( [ 
-            'ok'    => true, 
-            'data'  => $user 
-        ] , 201); 
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        $user = User::find($id);
-
         return view('user.edit')
-        ->with('user', $user);
+        ->with( 'user', $user );
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+
+    public function update(Request $request, User $user )
     {
         $request->validate( [
             'first_name'=> 'required|max:255',
@@ -87,30 +70,23 @@ class UserController extends Controller
             //'email'     => 'required|email|max:255',         
             ]);
 
-        $user = User::find($id);
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
-        $user->email = $request->email;
+        $user->email = \Str::lower( $request->email );
         $user->role_id = $request->role_id;
         $user->active = $request->active;
         //$user->password = $request->password ? bcrypt($request->password) : $user->password ;
         $user->save();
 
-        $request->session()->flash('success', 'Information was saved successfully.');
-
-        return redirect()->back(); // Redirect back to the form
-
-        return response( [ 
-            'ok'    => true, 
-            'data'  => $user 
-        ] , 200); 
+        return redirect()->back()->with('message', 'Information saved successfully'); 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+
+    public function destroy( User $user )
     {
-        //
+        $user->destroy();
+        return redirect('/users');
     }
+
+
 }

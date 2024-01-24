@@ -3,36 +3,22 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <script src="https://kit.fontawesome.com/8aea7295a5.js" crossorigin="anonymous"></script>
-
-    
-
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <style>
-        .card {
-    -webkit-box-shadow: 0 0.12rem 0.2rem rgba(0,0,0,0.07);
-    box-shadow: 0 0.12rem 0.2rem rgba(0,0,0,0.09) !important;
-    border: 1px solid #fff;
-    border-radius: 10px;
-}
-    </style>
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <img src="/images/logo.svg" alt="Easy and safe travel every step of the way" title="Easy and safe travel every step of the way">
+                    <span class="small">{{ config('app.name', 'QOPS') }}</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -73,19 +59,19 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                    <a class="nav-link" href="surveys"><i class="fa-solid fa-puzzle-piece"></i> {{ __('Surveys') }}</a>
+                                    <a class="nav-link" href="{{ url('surveys') }}"><i class="fa-solid fa-puzzle-piece"></i> {{ __('Surveys') }}</a>
                             </li>
                             <li class="nav-item">
-                                    <a class="nav-link" href="services"><i class="fa-solid fa-suitcase"></i> {{ __('Modules') }}</a>
+                                    <a class="nav-link" href="{{ url('/services') }}"><i class="fa-solid fa-suitcase"></i> {{ __('Modules') }}</a>
                             </li>
                             <li class="nav-item">
-                                    <a class="nav-link" href="groups"><i class="fa-solid fa-object-group"></i> {{ __('Groups') }}</a>
+                                    <a class="nav-link" href="{{ url('groups') }}"><i class="fa-solid fa-object-group"></i> {{ __('Groups') }}</a>
                             </li>
                             <li class="nav-item">
-                                    <a class="nav-link" href="analysts"><i class="fa-solid fa-users"></i> {{ __('Analysts') }}</a>
+                                    <a class="nav-link" href="{{ url('analysts') }}"><i class="fa-solid fa-users"></i> {{ __('Analysts') }}</a>
                             </li>
                             <li class="nav-item">
-                                    <a class="nav-link" href="users"><i class="fa-solid fa-clipboard-user"></i> {{ __('Users') }}</a>
+                                    <a class="nav-link" href="{{ url('/users') }}"><i class="fa-solid fa-clipboard-user"></i> {{ __('Users') }}</a>
                             </li>
                         @endguest
                     </ul>
@@ -135,5 +121,8 @@
             @yield('content')
         </main>
     </div>
+<script type="text/javascript">
+    
+</script>
 </body>
 </html>

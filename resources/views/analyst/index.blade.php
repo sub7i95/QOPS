@@ -1,59 +1,55 @@
 @extends('layouts.app')
 @section('content')
-
+@include('analyst.header')
 <div class="card">
-  <div class="card-body">
-    <!-- BEGIN CONTENT PAGE -->
-    <div class="row ">
-        <div class="col-md-12">        
-            <div class="actions pull-right">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-6 align-middle d-flex align-items-center">
+                <i class="fa-solid fa-users me-2"></i> Analysts
+            </div>
+            <div class="col-md-6 d-flex justify-content-end">
                 <a class="btn btn-success btn-user-add" href="/analysts/create">
-                    <i class="icon-plus"></i> Add New
+                    <i class="fa-solid fa-plus me-1"></i> New
                 </a>
             </div>
         </div>
-    </div>            
-    <br>
-    <div class="row ">
-        <div class="col-md-12">    
-            <table id="tableUsers" class="table table-striped table-bordered table-hover table-checkable order-column" >
-            <thead>
+    </div>   
+    <div class="card-body">
+ 
+        <table id="tableUsers" class="table dt table-borderless table-hover  table-striped table-hover " data-order='[[2,"asc"]]' >
+        <thead>
+            <tr>
+                <th></th>
+                <th> ID </th>
+                <th> Name </th>
+                <th> Email </th>
+                <th> Location </th>
+                <th> Status </th>
+            </tr>
+        </thead>
+            <Tbody>
+                @foreach ($analysts as $analyst)
                 <tr>
-                    <th></th>
-                    <th> ID </th>
-                    <th> Name </th>
-                    <th> Email </th>
-                    <th> Location </th>
-                    <th> Status </th>
+                    <td><a href="/analysts/{{$analyst->id}}/edit">Edit</a></td>
+                    <td>{{$analyst->id}}</td>
+                    <td>{{$analyst->name}}</td>
+                    <td>{{$analyst->email}}</td>
+                    <td>{{$analyst->location}}</td>
+                    <td>
+                        @if ($analyst->active == 1)
+                        <span class="badge text-bg-success">Active</span>
+                        @else
+                        <span class="badge text-bg-danger">Inactive</span>
+                        @endif
+                    </td>
                 </tr>
-            </thead>
-                <Tbody>
-                    @foreach ($analysts as $analyst)
-                    <tr>
-                        <td><a href="/analysts/{{$analyst->id}}/edit">Edit</a></td>
-                        <td>{{$analyst->id}}</td>
-                        <td>{{$analyst->name}}</td>
-                        <td>{{$analyst->email}}</td>
-                        <td>{{$analyst->location}}</td>
-                        <td>@if ($analyst->active == 1)
-                            Active
-                            @else
-                            Inactive
-                            @endif
-                        </td>
-                    </tr>
-                    @endforeach
-                </Tbody>
-            </table>  
-            {{ $analysts->links() }}  
-        </div>
+                @endforeach
+            </Tbody>
+        </table>  
     </div>
-    <!-- END PAGE BASE CONTENT -->
-  </div>
 </div>
 
 @endsection
-
 @section('scripts')
 <script type="text/javascript">
 //
