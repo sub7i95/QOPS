@@ -16,7 +16,7 @@
     <br>
     <div class="row ">
         <div class="col-md-12">    
-            <table id="tableUsers" class="table table-striped table-bordered table-hover table-checkable order-column" >
+            <table id="tableSurveys" class="table dt table-borderless table-hover  table-striped table-hover " data-order='[[2,"asc"]]' >
             <thead>
                 <tr>
                     <th></th>
@@ -35,17 +35,17 @@
                         <td>{{$survey->name}}</td>
                         <td>{{$survey->owner}}</td>
                         <td>{{$survey->process}}</td>
-                        <td>@if ($survey->active == 1)
-                            Active
+                        <td>
+                            @if ($survey->active == 1)
+                            <span class="badge text-bg-success">Active</span>
                             @else
-                            Inactive
+                            <span class="badge text-bg-danger">Inactive</span>
                             @endif
                         </td>
                     </tr>
                     @endforeach
                 </Tbody>
             </table>  
-            {{ $surveys->links() }}  
         </div>
     </div>
     <!-- END PAGE BASE CONTENT -->

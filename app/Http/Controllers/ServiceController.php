@@ -10,7 +10,7 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        return view('service.index')->with('services', Service::orderBy('name')->simplePaginate());
+        return view('service.index')->with('services', Service::orderBy('name')->get());
 
     }
 

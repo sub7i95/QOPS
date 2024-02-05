@@ -16,9 +16,7 @@
     <br>
     <div class="row ">
         <div class="col-md-12">   
- 
-            
-            <table id="" class="table table-striped table-bordered table-hover table-checkable order-column" >
+            <table id="tableModules" class="table dt table-borderless table-hover  table-striped table-hover " data-order='[[2,"asc"]]' >
             <thead>
                 <tr>
                     <th></th>
@@ -31,20 +29,22 @@
             <tbody>
             @foreach($services as $service)
                 <tr>
-                    <td> <a href="/services/{{$service->id}}/edit" class="btn btn-circle btn-xs dark btn-outline"> <i class="icon-pencil"></i>  Edit </a> </td>
+                    <td> <a href="/services/{{$service->id}}/edit"> Edit </a> </td>
                 
                     <td> {{ $service->id }} </td>
                     <td> {{ $service->name }} </td>
                     <td>  </td>
-                    <td> {{ $service->active==1 ? 'Active' : "Inactive"}} </td>
+                    <td>
+                            @if ($service->active == 1)
+                            <span class="badge text-bg-success">Active</span>
+                            @else
+                            <span class="badge text-bg-danger">Inactive</span>
+                            @endif
+                    </td>
                 </tr>
             @endforeach
             </tbody>
             </table>
-    {{ $services->links() }}  
-
-
-
 </div>
 </div>
 

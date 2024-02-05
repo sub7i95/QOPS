@@ -51,3 +51,7 @@ Route::get('/services/create', [App\Http\Controllers\ServiceController::class, '
 Route::post('/services/create', [App\Http\Controllers\ServiceController::class, 'store'])->name('services.store');
 Route::get('/services/{id}/edit', [App\Http\Controllers\ServiceController::class, 'show'])->name('services.show');
 Route::post('/services/{id}/edit', [App\Http\Controllers\ServiceController::class, 'update'])->name('services.update');
+
+Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
+Route::post('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+Route::post('/profile/password', [App\Http\Controllers\ProfileController::class, 'updatePassword'])->name('profile.update.password');

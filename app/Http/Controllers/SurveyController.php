@@ -10,7 +10,7 @@ class SurveyController extends Controller
 {
     public function index(Request $request )
     {
-        return view('survey.index')->with('surveys', Survey::orderBy('name')->simplePaginate());
+        return view('survey.index')->with('surveys', Survey::orderBy('name')->get());
     }
 
     public function create()

@@ -50,7 +50,7 @@ class UserController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
-        return redirect("/users/{$user->id}/edit")->wiht('message', 'Saved');
+        return redirect("/users/{$user->id}/edit")->with('message', 'Saved');
 
     }
 

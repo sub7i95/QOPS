@@ -16,8 +16,10 @@ class GroupController extends Controller
 
         //return view('group.index')->with('groups', Group::all())->simplePaginate();
 
-        return view('group.index')->with('groups', Group::orderBy('name')->simplePaginate());
-
+        return view('group.index')
+        ->with('groups', Group::orderBy('name')->get())
+        //->simplePaginate())
+        ;
     }
 
     /**

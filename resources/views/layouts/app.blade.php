@@ -18,7 +18,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="/images/logo.svg" alt="Easy and safe travel every step of the way" title="Easy and safe travel every step of the way">
-                    <span class="small">{{ config('app.name', 'QOPS') }}</span>
+                    <span class="small"></span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -34,7 +34,13 @@
                                 <i class="fa-solid fa-gauge"></i> Dashboard
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href=""> Dashboard 1 </a>
+                                    <a class="dropdown-item" href=""> SSD </a>
+                                    <a class="dropdown-item" href=""> SSD Analysts </a>
+                                    <a class="dropdown-item" href=""> SSD Groups </a>
+                                    <a class="dropdown-item" href=""> SSD Matrix </a>
+                                    <a class="dropdown-item" href=""> SSD PowerBI </a>
+                                    <a class="dropdown-item" href=""> SCC Charts </a>
+                                    <a class="dropdown-item" href=""> SCC Matrix </a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
@@ -98,7 +104,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="">
+                                    <a class="dropdown-item" href="/profile">
                                         <i class="fa-solid fa-address-card me-1"></i> {{ __('Profile') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

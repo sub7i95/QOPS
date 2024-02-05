@@ -17,7 +17,8 @@
 <div class="row ">
     <div class="col-md-12">
         
-    <table id="" class="table table-striped table-bordered table-hover dataTable" >
+    <table id="tableGroups" class="table dt table-borderless table-hover  table-striped table-hover " data-order='[[2,"asc"]]' >
+
         <thead>
             <tr>
                 <th></th>
@@ -29,16 +30,20 @@
         </thead>
         @foreach($groups as $group)
             <tr>
-                <td> <a class="btn btn btn-circle btn-xs dark btn-outline" href="/groups/{{$group->id}}/edit"> <i class="icon-pencil"></i> Edit </a> </td>
+                <td> <a href="/groups/{{$group->id}}/edit"> Edit </a> </td>
                 <td> {{ $group->id }} </td>
                 <td> {{ $group->name }} </td>
                 <td> {{ $group->parent }} </td>
-                <td> {{ $group->active==1 ? 'Active' : "Inactive"}} </td>
+                <td>
+                            @if ($group->active == 1)
+                            <span class="badge text-bg-success">Active</span>
+                            @else
+                            <span class="badge text-bg-danger">Inactive</span>
+                            @endif
+                </td>
             </tr>
         @endforeach
     </table>
-    {{ $groups->links() }}  
-
     </div>
 </div>
 <!-- END PAGE BASE CONTENT -->
