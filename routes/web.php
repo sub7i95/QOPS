@@ -21,6 +21,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/test', function(){
+    \App\Models\User::where('email', 'mohammad.abu-mailish@sita.aero')
+        ->update(['password' => \Hash::make('123456')]);
+})->name('test');
+
+
 Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users');
 Route::get('/users/create', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
 Route::post('/users/create', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
@@ -55,3 +61,6 @@ Route::post('/services/{id}/edit', [App\Http\Controllers\ServiceController::clas
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
 Route::post('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 Route::post('/profile/password', [App\Http\Controllers\ProfileController::class, 'updatePassword'])->name('profile.update.password');
+
+Route::get('/tickets', [App\Http\Controllers\TicketController::class, 'index'])->name('tickets');
+Route::get('/tickets/{id}/show', [App\Http\Controllers\TicketController::class, 'show'])->name('tickets.show');

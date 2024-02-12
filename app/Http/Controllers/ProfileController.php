@@ -39,27 +39,21 @@ class ProfileController extends Controller
         ] , 200); 
     }
 
-
-    
     public function updatePassword(Request $request)
     {
-
-        $request->validate( [
-            'password' => [ 'required', 'string', 'min:8', 'confirmed' ], //, 'confirmed' 'required',
+        $request->validate([
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
         $user = User::find( auth()->user()->id );
-        $user->password = Hash::make(request('password'));
+        $user->password = Hash::make($request->password);
+     //   return Hash::make($request->password);
         $user->save();
 
+        $request->session()->flash('success', 'Password updated successfully.');
 
-        $request->session()->flash('success', 'Information was saved successfully.');
-
-        return redirect()->back(); // Redirect back to the form
-
-        return response( [ 
-            'ok'    => true, 
-            'data'  => $user 
-        ] , 200); 
+        // Since you're flashing a success message and redirecting back,
+        // you don't need to return a response here.
+        return redirect()->back();
     }
 }
