@@ -32,10 +32,8 @@ class TicketController extends Controller
         return view('ticket.index')->with('tickets', $tickets);
     }
 
-    public function edit( $id )
-    { 
-        return view('ticket.edit')->with('tickets',Ticket::select()->find($id) );
-    }
+
+
 
     public function show( $id )
     {
@@ -44,12 +42,12 @@ class TicketController extends Controller
         
         $sccGroups = Group::where('active', 1)->orderBy('name')->get();
         
-        $score =\DB::table('v_tickets')
+        $score =\DB::table('tickets') //_vtickets
                 ->select(  'score' ,'score_ssd'  )
                 ->where('id', $id)
                 ->orWhere('ref_number', $id)
                 ->first() ;   
-        //
+
         $ticket = Ticket::select(
                 'ticket.*', 
                 'users.first_name', 
@@ -72,5 +70,7 @@ class TicketController extends Controller
         ->with('score', $score)
         ;
     }
+
+
 
 }
