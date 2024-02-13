@@ -39,6 +39,8 @@ Route::get('/analysts/{analyst}/edit', [App\Http\Controllers\AnalystController::
 Route::post('/analysts/{analyst}/edit', [App\Http\Controllers\AnalystController::class, 'update'])->name('analysts.update');
 Route::get('/analysts/create', [App\Http\Controllers\AnalystController::class, 'create'])->name('analysts.create');
 Route::post('/analysts/create', [App\Http\Controllers\AnalystController::class, 'store'])->name('analysts.store');
+Route::get('analysts/qsearch', [App\Http\Controllers\AnalystController::class, 'qsearch'])->name('analysts.qsearch');
+
 
 Route::get('/groups', [App\Http\Controllers\GroupController::class, 'index'])->name('groups');
 Route::get('/groups/create', [App\Http\Controllers\GroupController::class, 'create'])->name('groups.create');
@@ -68,6 +70,7 @@ Route::get('/tickets/download', [App\Http\Controllers\TicketDownloadController::
 Route::get('/tickets/upload', [App\Http\Controllers\TicketUploadController::class, 'index'])->name('tickets');
 Route::get('/tickets/{ticket}/show', [App\Http\Controllers\TicketController::class, 'show'])->name('tickets.show');
 Route::post('/tickets/{ticket}/delete', [App\Http\Controllers\TicketController::class, 'destroy'])->name('tickets.delete');
+
 
 
 Route::post('/tickets/{id}/begin', [App\Http\Controllers\TicketSurveyController::class, 'store'])->name('tickets.begin');

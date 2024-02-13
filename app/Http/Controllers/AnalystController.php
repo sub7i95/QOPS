@@ -14,6 +14,21 @@ class AnalystController extends Controller
     }
 
 
+
+    public function qsearch(Request $request)
+    {
+        $query = $request->input('name');
+        $results = Analyst::where('active',1)
+            ->where('name', 'LIKE', "%{$query}%")
+            ->orderBy('name')
+            ->distinct()
+            ->get(['name'])
+            ->take(10); 
+        return response()->json($results);
+    }
+
+
+
     public function index()
     {
         $analysts =Analyst::orderBy('name')

@@ -58,7 +58,8 @@
                     </select>
                 </td>
                 <td>
-                    <input type="text" class="form-control input-sm input-get-name" data-item-id="{{ $item->id }}" placeholder="enter name" name="analyst[]" value="{{ $item->analyst }}" style="width: 200px;" />
+                    <input type="text" class="form-control input-sm input-get-name getName w-100" data-item-id="{{ $item->id }}" placeholder="enter name" name="analyst[]" value="{{ $item->analyst }}"  />
+                    <ul class="suggestions-list"></ul>
                 </td>
                 <td>
                     <input type="text" class="form-control input-sm" placeholder="enter notes" name="notes[]" value="{{ $item->notes }}" width="100" />
