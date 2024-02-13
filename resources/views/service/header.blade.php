@@ -1,4 +1,4 @@
-<h1>Services</h1>
+<h1 class="mt-5">Services</h1>
 
 @if (\Session::has('message'))
 <div class="alert alert-success py-2 text-center my-2" role="alert">
