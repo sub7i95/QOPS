@@ -63,6 +63,7 @@ Route::post('/profile', [App\Http\Controllers\ProfileController::class, 'update'
 Route::post('/profile/password', [App\Http\Controllers\ProfileController::class, 'updatePassword'])->name('profile.update.password');
 
 Route::get('/tickets', [App\Http\Controllers\TicketController::class, 'index'])->name('tickets');
+Route::get('/tickets/qsearch', [App\Http\Controllers\TicketController::class, 'qsearch'])->name('qsearch');
 Route::get('/tickets/download', [App\Http\Controllers\TicketDownloadController::class, 'index'])->name('tickets');
 Route::get('/tickets/upload', [App\Http\Controllers\TicketUploadController::class, 'index'])->name('tickets');
 Route::get('/tickets/{id}/show', [App\Http\Controllers\TicketController::class, 'show'])->name('tickets.show');

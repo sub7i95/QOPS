@@ -87,9 +87,7 @@
                         @endif
                         @else
                         <form class="navbar-form navbar-left" action="{{ url('/tickets/qsearch') }} ">
-                            <div class="form-group">
-                                <input type="text" class="form-control " placeholder="Search...." name="q">
-                            </div>
+                            <input type="text" class="form-control " placeholder="Search...." name="q">
                         </form>
                         <li class="nav-item dropdown ">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

@@ -10,7 +10,7 @@ use App\Models\Group;
 class TicketController extends Controller
 {
 
-    public function index(Request $request )
+    public function index( Request $request )
     {
 
         $service = \Request::get('service');
@@ -74,5 +74,18 @@ class TicketController extends Controller
     }
 
 
+    public function qsearch( Request $request  )
+    {
+        request()->validate([
+            'q'=>'required'
+        ]);
+
+        $tickets = Ticket::select() 
+        ->where( 'ref_number',  $request->q  )
+        ->whereIn( 'status', [1, 2, 3, 4] )
+        ->get();
+      
+        return view('ticket.qsearch')->with('tickets', $tickets);
+    }
 
 }
