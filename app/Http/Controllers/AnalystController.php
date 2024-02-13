@@ -14,7 +14,6 @@ class AnalystController extends Controller
     }
 
 
-
     public function qsearch(Request $request)
     {
         $query = $request->input('name');
