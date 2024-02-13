@@ -29,7 +29,7 @@
             <tbody>
                 @foreach( $tickets as $ticket)
                 <tr>
-                    <td><a href="/tickets/{{ $ticket->ref_number }}" class="btn btn-circle btn-xs dark btn-outline"><i class="icon-eye"></i> View</a></td>
+                    <td><a href="/tickets/{{ $ticket->ref_number }}" class=""><i class="icon-eye"></i> View</a></td>
                     <td> {{ $ticket->ref_number }} </td>
                     <td> {{ $ticket->service }} </td>
                     <td> {{ $ticket->requester }} </td>
