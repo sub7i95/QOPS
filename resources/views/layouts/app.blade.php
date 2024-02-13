@@ -16,7 +16,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+        <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/dashboard') }}">
                     <img src="{{ url('/images/logo.svg') }}" alt="" title="" height="35">
@@ -26,7 +26,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto text-uppercase fw-bold">
+                    <ul class="navbar-nav me-auto text-uppercase fw-bold gap-2">
                         @guest
                         @else
                         <li class="nav-item">
@@ -71,7 +71,7 @@
                         @endguest
                     </ul>
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto ">
                         <!-- Authentication Links -->
                         @guest
                         @if (Route::has('login'))
