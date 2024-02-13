@@ -18,7 +18,7 @@
         <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
             <div class="container-fluid">
                 
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand" href="{{ url('/dashboard') }}">
                 <img src="{{ url('/images/logo.svg') }}" alt="" title="" height="35">
             </a>
 
