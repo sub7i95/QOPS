@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Ticket;
+use App\Models\User;
+use App\Models\Group;
+
+class TicketDownloadController extends Controller
+{
+
+    public function index(Request $request )
+    {
+
+
+        return view('ticket.download');
+    }
+
+
+
+
+
+
+}

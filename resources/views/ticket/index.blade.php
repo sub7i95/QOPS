@@ -1,88 +1,69 @@
 @extends('layouts.app')
-
 @section('content')
+@include('ticket.header')
 
-<!-- BEGIN PAGE HEAD-->
-<div class="page-head">
-    <!-- BEGIN PAGE BREADCRUMB  -->
-    <!--
-    <ul class="page-breadcrumb breadcrumb">
-        <li>
-            <a href="./">Home</a> / 
-        </li>
-        <li>
-            <span class="active">User</span>
-        </li>
-    </ul>
-    -->
-    <!-- END PAGE BREADCRUMB -->
-    <!-- BEGIN PAGE TITLE -->
-    <div class="page-title">
-        <h1>Tickets <small></small></h1>
+<div class="card mb-4">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-6 align-middle d-flex align-items-center">
+                <i class="fa-solid fa-magnifying-glass me-2"></i> Search
+            </div>
+            <div class="col-md-6 d-flex justify-content-end">
+            </div>
+        </div>
+    </div>    
+    <div class="card-body">
+        <form name="" method="post" action="{{ url("tickets") }}">
+        @csrf
+        <div class="row mb-2">
+            <div class="col-md-3">
+                <label>Status</label>
+                <select class="form-select" name="status">
+                    <option value="">All</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label>Module</label>
+                <select class="form-select" name="module">
+                    <option value="">All</option>
+                </select>
+            </div>   
+            <div class="col-md-3">
+                <label>Requester</label>
+                <select class="form-select" name="requester">
+                    <option value="">All</option>
+                </select>
+            </div>   
+            <div class="col-md-3">
+                <label>Group</label>
+                <select class="form-select" name="group">
+                    <option value="">All</option>
+                </select>
+            </div>                       
+        </div>
+        <div class="row">
+            <div class="col-m-12">
+                <button class="btn btn-primary w-100"><i class="fa-solid fa-magnifying-glass me-2"></i> Search</button>
+            </div>
+        </div>
+        </form>
     </div>
-    <!-- END PAGE TITLE -->
-    <!-- BEGIN PAGE TOOLBAR 
-    <div class="page-toolbar">
-        <div id="dashboard-report-range" class="pull-right tooltips btn btn-fit-height green" data-placement="top" data-original-title="Change dashboard date range">
-            <i class="icon-calendar"></i>&nbsp;
-            <span class="thin uppercase hidden-xs"></span>&nbsp;
-            <i class="fa fa-angle-down"></i>
+</div>
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-6 align-middle d-flex align-items-center">
+                <i class="fa-solid fa-ticket me-2"></i> Tickets
+            </div>
+            <div class="col-md-6 d-flex justify-content-end">
+            </div>
         </div>
     </div>
-    <!-- END PAGE TOOLBAR -->
-</div>
-<!-- END PAGE HEAD-->
-<!--
-<form class="form" action="">
-<input type="hidden" name="q" value="<?=$_GET['q']?>">
-<input type="hidden" name="status" value="<?=$_GET['status']?>">
-    <div class="row">
-        <div class="col-md-3">
-            <select class="form-control " name="service" id="service">
-                <option value="">- any service -</option>
-                <?php $services = App\Ticket::select('service')->whereNotNull('service')->groupBy('service')->get() ?>
-                @foreach($services as $service )
-                    @if( !empty($service->service))
-                        <option value="{{ $service->service }}"  >{{ $service->service }}</option>
-                    @endif
-                @endforeach
-            </select>
-        </div>        
-
-    </div>
-</form>
-
-<Br>
--->
-<!-- BEGIN CONTENT PAGE -->
-
-<!--                     
-<button class="btn btn-sm btn-danger" type="submit"  data-loading-text="Please wait..."> Delete </button>
--->
-
-<br>
-@if(request()->segment(2)=='requester')
-<ul class="nav nav-tabs">
-  <li <?php if($_GET['status']==1) { echo 'class="active"'; } ?> ><a href="/tickets/requester?q=<?=$_GET['q'] ?>&status=1"> New </a></li>
-  <li <?php if($_GET['status']==2) { echo 'class="active"'; } ?> ><a href="/tickets/requester?q=<?=$_GET['q'] ?>&status=2"> In Process </a></li>
-  <li <?php if($_GET['status']==3) { echo 'class="active"'; } ?> ><a href="/tickets/requester?q=<?=$_GET['q'] ?>&status=3"> Completed </a></li>
-</ul>
-@else
-<ul class="nav nav-tabs">
-  <li <?php if($_GET['status']==1) { echo 'class="active"'; } ?> ><a href="/tickets/ssd?q=<?=$_GET['q'] ?>&status=1"> New </a></li>
-  <li <?php if($_GET['status']==2) { echo 'class="active"'; } ?> ><a href="/tickets/ssd?q=<?=$_GET['q'] ?>&status=2"> In Process </a></li>
-  <li <?php if($_GET['status']==3) { echo 'class="active"'; } ?> ><a href="/tickets/ssd?q=<?=$_GET['q'] ?>&status=3"> Completed </a></li>
-</ul>
-@endif
-
-<br>
- 
-<div class="row ">
-    <div class="col-md-12">
-        <table id="table-tickets" class="table table-striped table-bordered table-hover table-checkable order-column" >
+    <div class="card-body">
+        <table id="table-tickets" class="table dt table-borderless table-hover  table-striped table-hover " data-order='[[2,"asc"]]'>
             <thead>
                 <tr>
-                    <th> <input class="form-check-input" type="checkbox" name="select-all" id="selectAll"   >  </th>
+                    <th> <input class="form-check-input" type="checkbox" name="select-all" id="selectAll"> </th>
                     <th></th>
                     <th> ID </th>
                     <th> Survey </th>
@@ -98,51 +79,50 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach( $tickets as $ticket)
+                @foreach( $tickets as $ticket)
                 <tr>
                     <td> <input class="form-check-input" type="checkbox" value="{{ $ticket->ref_number }}" name="ref_number"> </td>
-                    <td><a href="/tickets/{{ $ticket->ref_number }}" class="btn btn-primary btn-xs "><i class="icon-eye"></i> View</a></td>
+                    <td><a href="/tickets/{{ $ticket->ref_number }}" class=""><i class="icon-eye"></i> View</a></td>
                     <td> {{ $ticket->ref_number }} </td>
                     <td> {{ $ticket->survey }} </td>
-                    <td> {{ $ticket->service }}  </td>
-                    <td> {{ $ticket->requester }}  </td>
-                    <td> {{ $ticket->resolver_group }}  </td>
-                    <td> {{ $ticket->reported_by }}  </td>
-                    <td> {{ $ticket->priority }}  </td>
-                    <td> {{ $ticket->closed_date }}  </td>
-                    <td> {{ $ticket->coached==1 ? 'YES' : "" }}  </td>
-                    <td> {{ $ticket->status_name }}  </td>
+                    <td> {{ $ticket->service }} </td>
+                    <td> {{ $ticket->requester }} </td>
+                    <td> {{ $ticket->resolver_group }} </td>
+                    <td> {{ $ticket->reported_by }} </td>
+                    <td> {{ $ticket->priority }} </td>
+                    <td class="text-nowrap"> {{ $ticket->closed_date }} </td>
+                    <td> {{ $ticket->coached==1 ? 'YES' : "" }} </td>
+                    <td> {{ $ticket->status_name }} </td>
                     <td> {{ $ticket->score }} </td>
                 </tr>
-            @endforeach
+                @endforeach
             </tbody>
         </table>
     </div>
 </div>
-<!-- END PAGE BASE CONTENT -->
-
-
 @endsection
-
 @section('scripts')
 <script type="text/javascript">
-    var table = $('#table-tickets'); //main user tables
-    table.dataTable({
-    "lengthMenu"    : [ [  50, 100, -1], [  50, 100, "All"] ],
-    "pageLength"    : 50,
+var table = $('#table-tickets'); //main user tables
+table.dataTable({
+    "lengthMenu": [
+        [50, 100, -1],
+        [50, 100, "All"]
+    ],
+    "pageLength": 50,
     "iDisplayLength": 50,
-    "cache"         : true,     
-    });
-</script>
+    "cache": true,
+});
 
+</script>
 <script type="text/javascript">
 $('#selectAll').click(function(event) {
-if (this.checked) {
+    if (this.checked) {
         $(':checkbox').prop('checked', true);
     } else {
         $(':checkbox').prop('checked', false);
     }
 });
+
 </script>
-    
 @endsection

@@ -31,19 +31,10 @@
                     <ul class="navbar-nav me-auto text-uppercase fw-bold">
                         @guest
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <li class="nav-item">
+                                <a id="navbarDropdown" class="nav-link" href="{{ url('dashboard') }}" role="button" >
                                  Dashboard
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href=""> SSD </a>
-                                    <a class="dropdown-item" href=""> SSD Analysts </a>
-                                    <a class="dropdown-item" href=""> SSD Groups </a>
-                                    <a class="dropdown-item" href=""> SSD Matrix </a>
-                                    <a class="dropdown-item" href=""> SSD PowerBI </a>
-                                    <a class="dropdown-item" href=""> SCC Charts </a>
-                                    <a class="dropdown-item" href=""> SCC Matrix </a>
-                                </div>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -59,11 +50,9 @@
                                  Tickets
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href=""> By Requester </a>
-                                    <a class="dropdown-item" href=""> By SSD </a>
-                                    <a class="dropdown-item" href=""> By SCC </a>
-                                    <a class="dropdown-item" href=""> Search & Download </a>
-                                    <a class="dropdown-item" href=""> Upload New Tickets </a>
+                                    <a class="dropdown-item" href="{{ url('tickets') }}"> All </a>
+                                    <a class="dropdown-item" href="{{ url('tickets/download') }}"> Download </a>
+                                    <a class="dropdown-item" href="{{ url('tickets/upload') }}"> Upload  </a>
                                 </div>
                             </li>
                             <li class="nav-item">

@@ -12,10 +12,11 @@ class TicketController extends Controller
 
     public function index(Request $request )
     {
+
         $service = \Request::get('service');
         $group = \Request::get('q');
 
-        $tickets = \DB::table('ticket') 
+        $tickets = Ticket::select()
         ->where( 'status', \Request::get('status', 1) )
         //->where( 'requester',  $request->q  )
         //->whereNull( 'audit_practice_start_date' )
@@ -29,6 +30,7 @@ class TicketController extends Controller
             }
           })  
         ->get()->take(50);
+
         return view('ticket.index')->with('tickets', $tickets);
     }
 
