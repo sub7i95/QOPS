@@ -22,7 +22,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/test', function(){
-    \App\Models\User::where('email', 'mohammad.abu-mailish@sita.aero')
+    \App\Models\User::where('email', 'javier.ciocci@sita.aero')
         ->update(['password' => \Hash::make('123456')]);
 })->name('test');
 

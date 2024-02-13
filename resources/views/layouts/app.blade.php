@@ -14,24 +14,24 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="/images/logo.svg" alt="Easy and safe travel every step of the way" title="Easy and safe travel every step of the way">
-                    <span class="small"></span>
-                </a>
+            <a class="navbar-brand" href="{{ url('/') }}">
+                <img src="{{ url('/images/logo.svg') }}" alt="" title="" height="35">
+            </a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+                    <ul class="navbar-nav me-auto text-uppercase fw-bold">
                         @guest
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <i class="fa-solid fa-gauge"></i> Dashboard
+                                 Dashboard
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href=""> SSD </a>
@@ -45,7 +45,7 @@
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <i class="fa-solid fa-plus"></i> New
+                                 New
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href=""> PureCloud </a>
@@ -54,7 +54,7 @@
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <i class="fa-solid fa-bars-progress"></i> Tickets
+                                 Tickets
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href=""> By Requester </a>
@@ -65,19 +65,19 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('surveys') }}"><i class="fa-solid fa-puzzle-piece"></i> {{ __('Surveys') }}</a>
+                                    <a class="nav-link" href="{{ url('surveys') }}">{{ __('Surveys') }}</a>
                             </li>
                             <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/services') }}"><i class="fa-solid fa-suitcase"></i> {{ __('Modules') }}</a>
+                                    <a class="nav-link" href="{{ url('/services') }}"> {{ __('Modules') }}</a>
                             </li>
                             <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('groups') }}"><i class="fa-solid fa-object-group"></i> {{ __('Groups') }}</a>
+                                    <a class="nav-link" href="{{ url('groups') }}"> {{ __('Groups') }}</a>
                             </li>
                             <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('analysts') }}"><i class="fa-solid fa-users"></i> {{ __('Analysts') }}</a>
+                                    <a class="nav-link" href="{{ url('analysts') }}"> {{ __('Analysts') }}</a>
                             </li>
                             <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/users') }}"><i class="fa-solid fa-clipboard-user"></i> {{ __('Users') }}</a>
+                                    <a class="nav-link" href="{{ url('/users') }}">{{ __('Users') }}</a>
                             </li>
                         @endguest
                     </ul>
@@ -98,9 +98,9 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <i class="fa-solid fa-lock"></i> My Account
+                            <li class="nav-item dropdown ">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                My Account
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
