@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ticket;
+use App\Models\TicketArea;
 use App\Models\User;
 use App\Models\Group;
+use App\Models\Survey;
+use App\Models\TicketActivity;
+
 
 class TicketController extends Controller
 {
@@ -37,41 +41,30 @@ class TicketController extends Controller
 
 
 
-    public function show( $id )
+    public function show( Ticket $ticket )
     {
-        
+
         $users = User::where('active',1 )->orderBy('first_name')->get();
         
         $sccGroups = Group::where('active', 1)->orderBy('name')->get();
         
-        $score =\DB::table('tickets') //_vtickets
-                ->select(  'score' ,'score_ssd'  )
-                ->where('id', $id)
-                ->orWhere('ref_number', $id)
+        $score = Ticket::select() //_vtickets
+                //->select(  'score' ,'score_ssd'  )
+                ->where('id', $ticket->id)
                 ->first() ;   
-
-        $ticket = Ticket::select(
-                'ticket.*', 
-                'users.first_name', 
-                'users.last_name',
-                'survey.name as survey',
-                'survey.owner as survey_owner',
-                'survey.owner'
-            )
-            ->leftJoin( 'users', 'ticket.user_id', '=', 'users.id')
-            ->leftJoin( 'survey', 'ticket.survey_id', '=', 'survey.id')
-            ->where('ticket.id', $id)
-            ->orWhere('ref_number', $id)
-            ->orderBy('ticket.id', 'DESC')
-            ->first();
 
         return view('ticket.show')
         ->with('users', $users )
         ->with('ticket', $ticket )
         ->with('sccGroups', $sccGroups)
+        ->with('areas',  TicketArea::where('ticket_id', $ticket->id )->orderBy('position')->get()  )  
+        ->with('surveys',  Survey::where('active', 1)->orderBy('name')->get() )  
+        ->with('activities',  TicketActivity::where('ticket_id', $ticket->id )->get() )  
         ->with('score', $score)
         ;
     }
+
+
 
 
     public function qsearch( Request $request  )
@@ -87,5 +80,13 @@ class TicketController extends Controller
       
         return view('ticket.qsearch')->with('tickets', $tickets);
     }
+
+
+    public function destroy( Ticket $ticket  )
+    {
+        $ticket->delete();
+        return redirect('tickets');
+    }
+
 
 }

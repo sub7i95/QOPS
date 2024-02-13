@@ -66,6 +66,13 @@ Route::get('/tickets', [App\Http\Controllers\TicketController::class, 'index'])-
 Route::get('/tickets/qsearch', [App\Http\Controllers\TicketController::class, 'qsearch'])->name('qsearch');
 Route::get('/tickets/download', [App\Http\Controllers\TicketDownloadController::class, 'index'])->name('tickets');
 Route::get('/tickets/upload', [App\Http\Controllers\TicketUploadController::class, 'index'])->name('tickets');
-Route::get('/tickets/{id}/show', [App\Http\Controllers\TicketController::class, 'show'])->name('tickets.show');
+Route::get('/tickets/{ticket}/show', [App\Http\Controllers\TicketController::class, 'show'])->name('tickets.show');
+Route::post('/tickets/{ticket}/delete', [App\Http\Controllers\TicketController::class, 'destroy'])->name('tickets.delete');
+
+
+Route::post('/tickets/{id}/begin', [App\Http\Controllers\TicketSurveyController::class, 'store'])->name('tickets.begin');
+
+
+
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');

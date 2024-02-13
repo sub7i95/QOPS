@@ -81,8 +81,8 @@
             <tbody>
                 @foreach( $tickets as $ticket)
                 <tr>
-                    <td> <input class="form-check-input" type="checkbox" value="{{ $ticket->ref_number }}" name="ref_number"> </td>
-                    <td><a href="/tickets/{{ $ticket->ref_number }}" class=""><i class="icon-eye"></i> View</a></td>
+                    <td> <input class="form-check-input" type="checkbox" value="{{ $ticket->id }}" name="ref_number"> </td>
+                    <td><a href="/tickets/{{ $ticket->id }}/show" class=""><i class="icon-eye"></i> View</a></td>
                     <td> {{ $ticket->ref_number }} </td>
                     <td> {{ $ticket->survey }} </td>
                     <td> {{ $ticket->service }} </td>
@@ -92,7 +92,7 @@
                     <td> {{ $ticket->priority }} </td>
                     <td class="text-nowrap"> {{ $ticket->closed_date }} </td>
                     <td> {{ $ticket->coached==1 ? 'YES' : "" }} </td>
-                    <td> {{ $ticket->status_name }} </td>
+                    <td><span class="badge text-white text-bg-{{$ticket->status_color}}"> {{ $ticket->status_name }} </span> </td>
                     <td> {{ $ticket->score }} </td>
                 </tr>
                 @endforeach

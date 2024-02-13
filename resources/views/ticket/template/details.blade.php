@@ -4,21 +4,16 @@
         <table class="table table-bordered " >
         <tr>
             <td class="bg-gray" width="15%"> Survey  </td>
-            <td class="" >  {{ $ticket->survey }}  </td>
+            <td class="" >  {{ $ticket->survey->owner ?? null }}  </td>
         </tr>
         </table>
         
         <table class="table table-bordered " >
         <tr>
             <td class="bg-gray" width="15%"> Audit Status  </td>
-            <td class="" width="35%">  
-                <?php if($ticket->status==1) echo '<span class="label label-pill label-primary">New</span>' ?>
-                <?php if($ticket->status==2) echo '<span class="label label-pill label-success">In Process</span>' ?>
-                <?php if($ticket->status==3) echo '<span class="label label-pill label-danger"> Closed</span>'  ?>
-                <?php if($ticket->status==4) echo '<span class="label label-pill label-danger"> Canceled</span>'  ?>
-              </td>
+            <td class="" width="35%">  <span class="badge text-white text-bg-{{$ticket->status_color}}"> {{ $ticket->status_name }} </span> </td>
             <td class="bg-gray" width="15%">  Auditor Name  </td>
-            <td>  {{ $ticket->first_name}} {{ $ticket->last_name }}   </td>
+            <td>  {{ $ticket->user->first_name??null}} {{ $ticket->user->last_name ?? null }}   </td>
         </tr>
         <tr>
             <td class="bg-gray" >  Audit Start Date  </td>
@@ -60,7 +55,7 @@
                 <td class="bg-gray" width="15%" > Coached </td>
                 <td width="35%"> {{ $ticket->coached==1 ? 'YES' : 'NO' }} </td>
                 <td class="bg-gray" width="15%" >   Coached by </td>
-                <td width="35%"> @if($ticket->coached==1) {{ $ticket->coach->first_name}} {{ $ticket->coach->last_name}} @endif</td>
+                <td width="35%"> @if($ticket->coached==1) {{ $ticket->user->first_name ?? null }} {{ $ticket->user->last_name ?? null }} @endif</td>
             </tr>
         </table>
 

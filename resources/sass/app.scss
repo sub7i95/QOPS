@@ -7,22 +7,22 @@
     font-style: normal;
 }
 
-
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
-
 body {
     background-color: #f1f1f1;
     font-family: 'DINPro-Regular', sans-serif;
     color:#4b4b4a;
 }
+
 h1,h2,h3,h4,h5{
     color: #0095da
 }
+
 a {
     color: #0095da
 }
@@ -30,7 +30,7 @@ a {
 .login-image {
     background-image: url('/images/bg3.jpg');
     background-size: cover;
-     min-height: 100vh;
+    min-height: 100vh;
 }
 
 
@@ -43,11 +43,11 @@ a {
 }
 
 .btn-primary {
---bs-btn-color: #fff;
---bs-btn-bg: #0095da;
---bs-btn-hover-color: #fff;
---bs-btn-hover-bg: #026c9d;
---bs-btn-active-color: #fff;
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #0095da;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #026c9d;
+    --bs-btn-active-color: #fff;
 }
 
 // DataTables Boostrap
