@@ -8,7 +8,7 @@
                 <i class="fa-solid fa-users me-2"></i> Analysts
             </div>
             <div class="col-md-6 d-flex justify-content-end">
-                <a class="btn btn-success btn-user-add" href="/analysts/create">
+                <a class="btn btn-primary btn-user-add" href="/analysts/create">
                     <i class="fa-solid fa-plus me-1"></i> New
                 </a>
             </div>

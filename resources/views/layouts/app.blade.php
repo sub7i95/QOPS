@@ -17,6 +17,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
             <div class="container-fluid">
+                
             <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="{{ url('/images/logo.svg') }}" alt="" title="" height="35">
             </a>

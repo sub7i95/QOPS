@@ -2,18 +2,20 @@
 @section('content')
 @include('survey.header')
 <div class="card">
-  <div class="card-body">
-    <!-- BEGIN CONTENT PAGE -->
-    <div class="row ">
-        <div class="col-md-12">        
-            <div class="actions pull-right">
-                <a class="btn btn-success btn-user-add" href="/surveys/create">
-                    <i class="icon-plus"></i> Add New
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-6 align-middle d-flex align-items-center">
+                <i class="fa-solid fa-puzzle-piece me-2"></i> Surveys
+            </div>
+            <div class="col-md-6 d-flex justify-content-end">
+                <a class="btn btn-primary btn-user-add" href="/surveys/create">
+                    <i class="fa-solid fa-plus me-1"></i> Add New
                 </a>
             </div>
         </div>
-    </div>            
-    <br>
+    </div>        
+  <div class="card-body">
+
     <div class="row ">
         <div class="col-md-12">    
             <table id="tableSurveys" class="table dt table-borderless table-hover  table-striped table-hover " data-order='[[2,"asc"]]' >

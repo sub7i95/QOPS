@@ -2,18 +2,22 @@
 @section('content')
 @include('group.header')
 <div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-6 align-middle d-flex align-items-center">
+                <i class="fa-solid fa-users me-2"></i> Groups
+            </div>
+            <div class="col-md-6 d-flex justify-content-end">
+                <a class="btn btn-primary btn-user-add" href="/groups/create">
+                    <i class="fa-solid fa-plus me-1"></i> Add New
+                </a>
+            </div>
+        </div>
+    </div>        
   <div class="card-body">
 <!-- BEGIN CONTENT PAGE -->
-<div class="row ">
-    <div class="col-md-12">
-        <div class="actions pull-right">
-            <a class="btn btn-success btn-group-add" href="/groups/create">
-                <i class="icon-plus"></i> Add New
-            </a>
-        </div>
-    </div>
-</div>
-<br>            
+
+    
 <div class="row ">
     <div class="col-md-12">
         
