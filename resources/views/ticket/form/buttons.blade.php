@@ -7,10 +7,10 @@
     <button type="submit" class="btn btn-primary" data-loading-text="Please wait...">Save Changes</button>
     @endif
     @if( $ticket->status==2 )
-    <button type="button" class="btn btn-success" data-loading-text="Please wait..." id="btn-completed" data-id="{{$ticket->id}}"> Finish </button>
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal-finish"> Finish </button>
     @endif
     @if( $ticket->status==3 AND $ticket->coached==0 )
-    <button type="button" class="btn btn-success btn-ticket-coached" data-loading-text="Loading..." data-id="{{$ticket->id}}"> Coaching Provided </button>
+    <button type="button" class="btn btn-success btn-ticket-coached" data-bs-toggle="modal" data-bs-target="#modal-coached"> Coaching Provided </button>
     @endif
     @if( $ticket->status==300 AND $ticket->is_audited==0 )
     <button type="button" class="btn btn-standard btn-start-compliance" data-loading-text="Loading..." data-id="{{$ticket->id}}"> Start Audit </button>

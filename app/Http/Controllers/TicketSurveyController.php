@@ -93,9 +93,9 @@ class TicketSurveyController extends Controller
 
 
 
+    // updating the ticket surevey
     public function update( Request $request, Ticket $ticket )
     {
-
         $data = $request->item_id;
         $rows = count($data);
         for($i = 0; $i <= $rows-1 ; $i++) 
@@ -110,7 +110,27 @@ class TicketSurveyController extends Controller
             $TicketItem->group = $request->group[$i] ?? null  ;
             $TicketItem->save();
         }
+        return redirect("/tickets/{$ticket->id}/show")->with('message', 'Successfully updated');
+    }
 
+
+    // when the ticket survey is completed or finished
+    public function finished( Ticket $ticket )
+    {
+        $ticket->status = 3; 
+        $ticket->user_id = \Auth::user()->id; //in porcess
+        $ticket->audit_end_date = date('Y-m-d');
+        $ticket->save();
+        return redirect("/tickets/{$ticket->id}/show")->with('message', 'Successfully updated');
+    }
+
+    // when the ticket survey is coached 
+    public function coached( Ticket $ticket )
+    {
+        $ticket->coached = 1;
+        $ticket->coached_by = \Auth::id();
+        $ticket->coached_date = date('Y-m-d');
+        $ticket->save();
         return redirect("/tickets/{$ticket->id}/show")->with('message', 'Successfully updated');
     }
 

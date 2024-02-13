@@ -48,6 +48,11 @@ a {
     --bs-btn-hover-color: #fff;
     --bs-btn-hover-bg: #026c9d;
     --bs-btn-active-color: #fff;
+    --bs-btn-disabled-color: #fff;
+}
+
+.badge {
+    --bs-badge-font-size: .85em;
 }
 
 // DataTables Boostrap

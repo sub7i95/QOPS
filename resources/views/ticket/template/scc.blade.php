@@ -34,7 +34,7 @@
             <tr>
                 <td> {{ $item->name }} <input type="hidden" name="item_id[]" value="{{ $item->id }}"> </td>
                 <td>
-                    <select name="score[]" id="score" class="form-control input-sm">
+                    <select name="score[]" id="score" class="form-select  ">
                         <option value="-1" <?php if( $item->score==-1 ) echo 'selected' ?> >N/A</option>
                         <option value="0" <?php if( $item->score==0 ) echo 'selected' ?> >No</option>
                         <option value="1" <?php if( $item->score==1 ) echo 'selected' ?> >Yes</option>
@@ -42,7 +42,7 @@
                     </select>
                 </td>
                 <td>
-                    <select name="location[]" id="location" class="form-control input-sm">
+                    <select name="location[]" id="location" class="form-select ">
                         <option value="">-N/A-</option>
                         <option value="SIN" <?php if( $item->location=="SIN" ) echo 'selected' ?> >SIN</option>
                         <option value="YUL" <?php if( $item->location=="YUL" ) echo 'selected' ?> >YUL</option>
@@ -50,7 +50,7 @@
                     </select>
                 </td>
                 <td>
-                    <select name="group[]" id="group" class="form-control input-sm">
+                    <select name="group[]" id="group" class="form-select ">
                         <option value="">-select-</option>
                         @foreach( $sccGroups as $group )
                         <option value="{{$group->name}}" <?php if( $item->group== $group->name ) echo 'selected' ?> > {{ $group->name }} </option>

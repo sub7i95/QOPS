@@ -72,7 +72,8 @@ Route::post('/tickets/{ticket}/delete', [App\Http\Controllers\TicketController::
 
 Route::post('/tickets/{id}/begin', [App\Http\Controllers\TicketSurveyController::class, 'store'])->name('tickets.begin');
 Route::post('/tickets/{ticket}', [App\Http\Controllers\TicketSurveyController::class, 'update'])->name('tickets.update');
-
+Route::post('/tickets/{ticket}/finished', [App\Http\Controllers\TicketSurveyController::class, 'finished'])->name('tickets.finished');
+Route::post('/tickets/{ticket}/coached', [App\Http\Controllers\TicketSurveyController::class, 'coached'])->name('tickets.coached');
 
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
