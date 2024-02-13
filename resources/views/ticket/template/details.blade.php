@@ -4,7 +4,7 @@
         <table class="table table-bordered " >
         <tr>
             <td class="bg-gray" width="15%"> Survey  </td>
-            <td class="" >  {{ $ticket->survey->owner ?? null }}  </td>
+            <td class="" >  {{ $ticket->survey->name ?? null }} </td>
         </tr>
         </table>
         
