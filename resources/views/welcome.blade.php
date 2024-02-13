@@ -25,13 +25,17 @@
 
 <div class="container-fluid">
     <div class="row">
-
         <div class="col-md-6 d-flex align-items-center justify-content-center">
         <!-- login form -->
 
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
+                        <div class="row mb-5 text-center">
+                            <div class="col-md-12">
+                                <img src="{{ url('/images/logo.svg') }}" alt="" title="" height="35" class="" >
+                            </div>
+                        </div>
                         <div class="row mb-3">
                             <label for="email" class="col-form-label ">{{ __('Email') }}</label>
                             <div class="">
@@ -87,7 +91,8 @@
 
         <!-- end login form -->
         </div>
-                <div class="col-md-6 login-image">
+        <div class="col-md-6 login-image">
+            <img src="{{ url('/images/logo.svg') }}" alt="" title="" height="35" class="text-white" style="position:absolute; top:10px; right:10px; color: #fff;" >
         </div>
     </div>
 </div>
