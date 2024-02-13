@@ -91,4 +91,27 @@ class TicketSurveyController extends Controller
         return redirect()->back();
     }
 
+
+
+    public function update( Request $request, Ticket $ticket )
+    {
+
+        $data = $request->item_id;
+        $rows = count($data);
+        for($i = 0; $i <= $rows-1 ; $i++) 
+        {
+            $TicketItem = TicketItem::find( $data[$i] ) ;
+            $TicketItem->score = $request->score[$i] ?? null ;
+            $TicketItem->is_applicable = $request->score[$i]==-1 ? 0 : 1;
+            $TicketItem->notes = $request->notes[$i] ?? null ;
+            $TicketItem->notes_manager = $request->notes_manager[$i] ?? null ;
+            $TicketItem->analyst = $request->analyst[$i] ?? null ;
+            $TicketItem->location = $request->location[$i] ?? null ;
+            $TicketItem->group = $request->group[$i] ?? null  ;
+            $TicketItem->save();
+        }
+
+        return redirect("/tickets/{$ticket->id}/show")->with('message', 'Successfully updated');
+    }
+
 }
