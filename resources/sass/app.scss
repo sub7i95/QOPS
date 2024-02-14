@@ -156,3 +156,17 @@ a {
     height: 100%;
     width: 100%;
 }
+
+div.dataTables_wrapper div.dataTables_filter input {
+    color: #323a46;
+    background-color: #f3f7f9;
+    border-color: #f3f7f9;
+    height: 35px;
+    margin-right: 10px;
+}
+
+/* data tables dropdown*/
+.dataTables_wrapper .dataTables_length select {
+    background-color: #f3f7f9;
+    border: 0px
+}
