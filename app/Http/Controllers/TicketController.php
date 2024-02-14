@@ -16,6 +16,11 @@ use App\Models\Analyst;
 class TicketController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index( Request $request )
     {
 
@@ -78,7 +83,7 @@ class TicketController extends Controller
         ->with('request_group', request()->group ?? null )
         ->with('request_requester', request()->requester ?? null )
         ->with('request_service', request()->service ?? null )
-        ->with('request_user', request()->user ?? null )
+        ->with('request_user', request()->user_id ?? null )
         ->with('request_analyst', request()->analyst ?? null )
         ->with('open_date_from', request()->open_date_from ?? null )
         ->with('open_date_to', request()->open_date_to ?? null )

@@ -71,8 +71,6 @@ Route::get('/tickets/upload', [App\Http\Controllers\TicketUploadController::clas
 Route::get('/tickets/{ticket}/show', [App\Http\Controllers\TicketController::class, 'show'])->name('tickets.show');
 Route::post('/tickets/{ticket}/delete', [App\Http\Controllers\TicketController::class, 'destroy'])->name('tickets.delete');
 
-
-
 Route::post('/tickets/{id}/begin', [App\Http\Controllers\TicketSurveyController::class, 'store'])->name('tickets.begin');
 Route::post('/tickets/{ticket}', [App\Http\Controllers\TicketSurveyController::class, 'update'])->name('tickets.update');
 Route::post('/tickets/{ticket}/finished', [App\Http\Controllers\TicketSurveyController::class, 'finished'])->name('tickets.finished');

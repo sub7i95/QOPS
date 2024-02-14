@@ -2,15 +2,6 @@
 @section('content')
 @include('ticket.header')
 <div class="card mb-4">
-    <div class="card-header">
-        <div class="row">
-            <div class="col-md-6 align-middle d-flex align-items-center">
-                <i class="fa-solid fa-magnifying-glass me-2"></i> Search
-            </div>
-            <div class="col-md-6 d-flex justify-content-end">
-            </div>
-        </div>
-    </div>
     <div class="card-body">
         <form name="" method="get" action="{{ url("tickets") }}">
             <div class="row mb-2">
