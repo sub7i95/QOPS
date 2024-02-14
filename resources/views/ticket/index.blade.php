@@ -13,31 +13,44 @@
         </div>
     </div>    
     <div class="card-body">
-        <form name="" method="post" action="{{ url("tickets") }}">
-        @csrf
+        <form name="" method="get" action="{{ url("tickets") }}">
+
         <div class="row mb-2">
-            <div class="col-md-3">
+            <div class="col">
                 <label>Status</label>
-                <select class="form-select" name="status">
+                <select class="form-select" name="status" >
                     <option value="">All</option>
+                    <option value="1" @if($request_status==1) selected @endif  >New</option>
+                    <option value="2" @if($request_status==2) selected @endif  >In Process</option>
+                    <option value="3" @if($request_status==3) selected @endif >Completed</option>
+                    <option value="4" @if($request_status==4) selected @endif >Canceled</option>
                 </select>
             </div>
-            <div class="col-md-3">
+            <div class="col">
                 <label>Module</label>
-                <select class="form-select" name="module">
+                <select class="form-select" name="service">
                     <option value="">All</option>
+                    @foreach($services as $service)
+                    <option value="{{ $service->name }}" @if($service->name==$request_service) selected @endif >{{ $service->name }}</option>
+                    @endforeach                    
                 </select>
             </div>   
-            <div class="col-md-3">
+            <div class="col">
                 <label>Requester</label>
                 <select class="form-select" name="requester">
                     <option value="">All</option>
+                    @foreach($groups as $group)
+                    <option value="{{ $group->name }}" @if($group->name==$request_requester) selected @endif>{{ $group->name }}</option>
+                    @endforeach                    
                 </select>
             </div>   
-            <div class="col-md-3">
+            <div class="col">
                 <label>Group</label>
                 <select class="form-select" name="group">
                     <option value="">All</option>
+                    @foreach($groups as $group)
+                    <option value="{{ $group->name }}" @if($group->name==$request_group) selected @endif>{{ $group->name }}</option>
+                    @endforeach
                 </select>
             </div>                       
         </div>
@@ -84,7 +97,7 @@
                     <td> <input class="form-check-input" type="checkbox" value="{{ $ticket->id }}" name="ref_number"> </td>
                     <td><a href="/tickets/{{ $ticket->id }}/show" class=""><i class="icon-eye"></i> View</a></td>
                     <td> {{ $ticket->ref_number }} </td>
-                    <td> {{ $ticket->survey }} </td>
+                    <td> {{ $ticket->survey->name ?? null }} </td>
                     <td> {{ $ticket->service }} </td>
                     <td> {{ $ticket->requester }} </td>
                     <td> {{ $ticket->resolver_group }} </td>
