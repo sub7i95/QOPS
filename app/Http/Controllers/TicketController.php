@@ -73,7 +73,7 @@ class TicketController extends Controller
                          
         ->with(['survey'])
         ->distinct()
-        ->take(100)
+        ->take(500)
         ->get()
         ;
 
