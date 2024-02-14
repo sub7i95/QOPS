@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -86,7 +85,7 @@
                         @endif
                         @else
                         <form class="navbar-form navbar-left" action="{{ url('/tickets/qsearch') }} ">
-                            <input type="text" class="form-control " placeholder="Search...." name="q" required>
+                            <input type="search" class="form-control " placeholder="Search...." name="q" required>
                         </form>
                         <li class="nav-item dropdown ">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -114,7 +113,8 @@
             @yield('content')
         </main>
     </div>
-
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     @yield('scripts')
 </body>
 

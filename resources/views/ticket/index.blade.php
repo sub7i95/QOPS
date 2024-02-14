@@ -122,14 +122,14 @@
         <table id="table-tickets" class="table dt table-borderless table-hover  table-striped table-hover " data-order='[[2,"asc"]]'>
             <thead>
                 <tr>
-                    <th> <input class="form-check-input" type="checkbox" name="select-all" id="selectAll"> </th>
+                    <!-- <th> <input class="form-check-input" type="checkbox" name="select-all" id="selectAll"> </th> -->
                     <th></th>
                     <th> ID </th>
                     <th> Survey </th>
                     <th> Module </th>
                     <th> Requester </th>
                     <th> Resolver Group </th>
-                    <th> Reported by </th>
+                   <!--  <th> Reported by </th> -->
                     <th> Priority </th>
                     <th> Closed </th>
                     <th> Coached </th>
@@ -140,14 +140,14 @@
             <tbody>
                 @foreach( $tickets as $ticket)
                 <tr>
-                    <td> <input class="form-check-input" type="checkbox" value="{{ $ticket->id }}" name="ref_number"> </td>
+                   <!--  <td> <input class="form-check-input" type="checkbox" value="{{ $ticket->id }}" name="ref_number"> </td> -->
                     <td><a href="/tickets/{{ $ticket->id }}/show" class=""><i class="icon-eye"></i> View</a></td>
                     <td> {{ $ticket->ref_number }} </td>
                     <td> {{ $ticket->survey->name ?? null }} </td>
                     <td> {{ $ticket->service }} </td>
                     <td> {{ $ticket->requester }} </td>
                     <td> {{ $ticket->resolver_group }} </td>
-                    <td> {{ $ticket->reported_by }} </td>
+                   <!--  <td> {{ $ticket->reported_by }} </td> -->
                     <td> {{ $ticket->priority }} </td>
                     <td class="text-nowrap"> {{ $ticket->closed_date }} </td>
                     <td> {{ $ticket->coached==1 ? 'YES' : "" }} </td>
@@ -162,19 +162,6 @@
 @endsection
 @section('scripts')
 <script type="text/javascript">
-var table = $('#table-tickets'); //main user tables
-table.dataTable({
-    "lengthMenu": [
-        [50, 100, -1],
-        [50, 100, "All"]
-    ],
-    "pageLength": 50,
-    "iDisplayLength": 50,
-    "cache": true,
-});
-
-</script>
-<script type="text/javascript">
 $('#selectAll').click(function(event) {
     if (this.checked) {
         $(':checkbox').prop('checked', true);
@@ -182,6 +169,5 @@ $('#selectAll').click(function(event) {
         $(':checkbox').prop('checked', false);
     }
 });
-
 </script>
 @endsection
