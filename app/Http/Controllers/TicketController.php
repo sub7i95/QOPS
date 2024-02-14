@@ -11,6 +11,7 @@ use App\Models\Survey;
 use App\Models\TicketActivity;
 use App\Models\TicketStatus;
 use App\Models\Service;
+use App\Models\Analyst;
 
 class TicketController extends Controller
 {
@@ -32,7 +33,34 @@ class TicketController extends Controller
         })  
         ->when( request()->requester, function($query) {
                 $query->where( 'requester',  request()->requester  );
-        })                     
+        })   
+        ->when( request()->user_id, function($query) {
+                $query->where( 'user_id',  request()->user_id  );
+        }) 
+        ->when( request()->open_date_from, function($query) {
+                $query->whereDate( 'open_date', '>=' , request()->open_date_from  );
+        })    
+        ->when( request()->open_date_to, function($query) {
+                $query->whereDate( 'open_date', '<=' , request()->open_date_to  );
+        })   
+        ->when( request()->closed_date_from, function($query) {
+                $query->whereDate( 'closed_date', '>=' , request()->closed_date_from  );
+        })    
+        ->when( request()->closed_date_to, function($query) {
+                $query->whereDate( 'closed_date', '<=' , request()->closed_date_to  );
+        })   
+        ->when( request()->audit_start_date_from, function($query) {
+                $query->whereDate( 'audit_start_date', '>=' , request()->audit_start_date_from  );
+        })    
+        ->when( request()->audit_start_date_to, function($query) {
+                $query->whereDate( 'audit_start_date', '<=' , request()->audit_start_date_to  );
+        })  
+        ->when( request()->audit_end_date_from, function($query) {
+                $query->whereDate( 'audit_end_date', '>=' , request()->audit_end_date_from  );
+        })    
+        ->when( request()->audit_end_date_to, function($query) {
+                $query->whereDate( 'audit_end_date', '<=' , request()->audit_end_date_to  );
+        })                          
         ->with(['survey'])
         ->take(100)
         ->get()
@@ -44,13 +72,22 @@ class TicketController extends Controller
         ->with('tickets', $tickets )
         ->with('groups', Group::distinct()->where('active',1)->orderBy('name')->get() )
         ->with('services', Service::distinct()->where('active',1)->orderBy('name')->get()  )
+        ->with('users', User::distinct()->where('active',1)->orderBy('first_name')->get()  )
+        ->with('analysts', Analyst::distinct()->where('active',1)->orderBy('name')->get()  )
         ->with('request_status', request()->status ?? null )
         ->with('request_group', request()->group ?? null )
         ->with('request_requester', request()->requester ?? null )
         ->with('request_service', request()->service ?? null )
-        ->with('request_from', request()->from ?? null )
-        ->with('request_to', request()->to ?? null )
-        ->with('request_date_field', request()->date_field ?? null )
+        ->with('request_user', request()->user ?? null )
+        ->with('request_analyst', request()->analyst ?? null )
+        ->with('open_date_from', request()->open_date_from ?? null )
+        ->with('open_date_to', request()->open_date_to ?? null )
+        ->with('closed_date_from', request()->closed_date_from ?? null )
+        ->with('closed_date_to', request()->closed_date_to ?? null )
+        ->with('audit_start_date_from', request()->audit_start_date_from ?? null )
+        ->with('audit_start_date_to', request()->audit_start_date_to ?? null )
+        ->with('audit_end_date_from', request()->audit_end_date_from ?? null )
+        ->with('audit_end_date_to', request()->audit_end_date_to ?? null )
         ;
     }
 
