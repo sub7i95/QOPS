@@ -25,9 +25,9 @@ class TicketController extends Controller
     {
 
 
-        $tickets = Ticket::select()
+        $tickets = Ticket::select('ticket.*')
         ->when( request()->status, function($query)  {
-            $query->where( 'status',   request()->status  );
+            $query->where( 'ticket.status',   request()->status  );
         })  
         ->when( request()->group, function($query) {
                 $query->where( 'requester',  request()->group  )
@@ -65,8 +65,14 @@ class TicketController extends Controller
         })    
         ->when( request()->audit_end_date_to, function($query) {
                 $query->whereDate( 'audit_end_date', '<=' , request()->audit_end_date_to  );
-        })                          
+        })     
+        ->when( request()->analyst, function($query) {
+                $query->join('tickets_items', 'ticket.id','=','tickets_items.ticket_id')
+                ->where( 'tickets_items.analyst',  request()->analyst  );
+        })   
+                         
         ->with(['survey'])
+        ->distinct()
         ->take(100)
         ->get()
         ;

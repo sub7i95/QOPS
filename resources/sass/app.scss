@@ -13,8 +13,11 @@
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
+
+
+
 body {
-    background-color: #f1f1f1;
+    background-color: #f1f5f9;
     font-family: 'DINPro-Regular', sans-serif;
     color:#4b4b4a;
 }
@@ -157,16 +160,51 @@ a {
     width: 100%;
 }
 
-div.dataTables_wrapper div.dataTables_filter input {
-    color: #323a46;
-    background-color: #f3f7f9;
-    border-color: #f3f7f9;
-    height: 35px;
-    margin-right: 10px;
-}
 
 /* data tables dropdown*/
 .dataTables_wrapper .dataTables_length select {
-    background-color: #f3f7f9;
-    border: 0px
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+    font-size: .9rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--bs-body-color);
+/*    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;*/
+    background-color: var(--bs-body-bg);
+    background-image: var(--bs-form-select-bg-img),var(--bs-form-select-bg-icon, none);
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: .9rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #212529;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #f8fafc;
+    background-clip: padding-box;
+    border: 1px solid #dee2e6!important;
+    border-radius: .375rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+
+
+.selectize-control.single .selectize-input, .selectize-control.single .selectize-input input {
+    background-color: #f8fafc!important;
 }

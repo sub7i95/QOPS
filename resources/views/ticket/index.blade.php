@@ -26,7 +26,7 @@
                 </div>
                 <div class="col">
                     <label>Requester</label>
-                    <select class="form-select" name="requester">
+                    <select class="form-select select2" name="requester">
                         <option value="">All</option>
                         @foreach($groups as $group)
                         <option value="{{ $group->name }}" @if($group->name==$request_requester) selected @endif>{{ $group->name }}</option>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="col">
                     <label>Group</label>
-                    <select class="form-select" name="group">
+                    <select class="form-select select2" name="group">
                         <option value="">All</option>
                         @foreach($groups as $group)
                         <option value="{{ $group->name }}" @if($group->name==$request_group) selected @endif>{{ $group->name }}</option>
@@ -83,7 +83,7 @@
             <div class="row mb-2">
                 <div class="col">
                     <label>Analyst</label>
-                    <select class="form-select" name="analyst">
+                    <select class="form-select select2" name="analyst">
                         <option value="">All</option>
                         @foreach($analysts as $analyst)
                         <option value="{{ $analyst->name }}" @if($analyst->name==$request_analyst) selected @endif >{{ $analyst->name }}</option>
@@ -92,7 +92,7 @@
                 </div>
                 <div class="col">
                     <label>Auditor</label>
-                    <select class="form-select" name="user_id">
+                    <select class="form-select select2" name="user_id">
                         <option value="">All</option>
                         @foreach($users as $user)
                         <option value="{{ $user->id }}" @if($user->id==$request_user) selected @endif >{{ $user->first_name }} {{ $user->last_name }}</option>
