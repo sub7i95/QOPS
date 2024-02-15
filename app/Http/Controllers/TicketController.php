@@ -23,8 +23,6 @@ class TicketController extends Controller
 
     public function index( Request $request )
     {
-
-
         $tickets = Ticket::select('ticket.*')
         ->when( request()->status, function($query)  {
             $query->where( 'ticket.status',   request()->status  );
@@ -69,8 +67,7 @@ class TicketController extends Controller
         ->when( request()->analyst, function($query) {
                 $query->join('tickets_items', 'ticket.id','=','tickets_items.ticket_id')
                 ->where( 'tickets_items.analyst',  request()->analyst  );
-        })   
-                         
+        })            
         ->with(['survey'])
         ->distinct()
         ->take(500)

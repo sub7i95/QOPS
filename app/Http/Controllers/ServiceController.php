@@ -8,6 +8,12 @@ use App\Models\Service;
 
 class ServiceController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+        
     public function index()
     {
         return view('service.index')->with('services', Service::orderBy('name')->get());

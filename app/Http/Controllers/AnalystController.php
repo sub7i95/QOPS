@@ -13,7 +13,6 @@ class AnalystController extends Controller
         $this->middleware('auth');
     }
 
-
     public function qsearch(Request $request)
     {
         $query = $request->input('name');

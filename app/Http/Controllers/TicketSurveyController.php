@@ -17,6 +17,11 @@ use App\Models\SurveyItem;
 class TicketSurveyController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function store( Request $request, $ticket_id )
     {
 

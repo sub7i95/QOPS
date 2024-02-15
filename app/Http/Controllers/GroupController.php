@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 
 class GroupController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         //return view('analyst.index')->with('analysts', Analyst::orderBy('name')->simplePaginate());
