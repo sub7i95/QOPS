@@ -22,6 +22,7 @@ class TicketSurveyController extends Controller
         $this->middleware('auth');
     }
     
+
     public function store( Request $request, $ticket_id )
     {
 
