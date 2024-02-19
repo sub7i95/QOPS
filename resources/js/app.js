@@ -6,7 +6,6 @@ import './bootstrap';
 import DataTable from 'datatables.net-dt';
 
 
-
 document.addEventListener('DOMContentLoaded', function() {
     //datatables
     let tableElement = document.querySelector('.dt');
