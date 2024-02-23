@@ -49,9 +49,9 @@
                                 Tickets
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ url('tickets') }}"> All </a>
-                                <a class="dropdown-item" href="{{ url('tickets/download') }}"> Download </a>
-                                <a class="dropdown-item" href="{{ url('tickets/upload') }}"> Upload </a>
+                                <a class="dropdown-item" href="{{ url('tickets') }}"> <i class="fa-solid fa-border-all me-1"></i> All </a>
+                                <a class="dropdown-item" href="{{ url('tickets/download') }}"><i class="fa-solid fa-download me-1"></i> Download </a>
+                                <a class="dropdown-item" href="{{ url('tickets/upload') }}"> <i class="fa-solid fa-upload me-1"></i> Upload </a>
                             </div>
                         </li>
                         <li class="nav-item">

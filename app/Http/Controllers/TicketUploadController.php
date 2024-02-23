@@ -42,6 +42,7 @@ class TicketUploadController extends Controller
         \DB::beginTransaction();
 
         $rowsImported = 0; // Initialize a counter for successfully imported rows
+        $duplicates = 0; 
 
         try {
             while (($row = fgetcsv($handle, 1000, ",")) !== FALSE) {
@@ -52,6 +53,7 @@ class TicketUploadController extends Controller
 
                 // Check for ticket existence more efficiently
                 if (Ticket::where('ref_number', $row[1])->exists()) {
+                    $duplicates++; // Increment the duplicate counter
                     continue; // Skip this iteration if ticket exists
                 }
 
@@ -84,7 +86,7 @@ class TicketUploadController extends Controller
 
             fclose($handle); // Always close the file handler
 
-            return redirect()->back()->with('message', "File imported successfully. {$rowsImported} rows imported." );
+            return redirect()->back()->with('message', " {$rowsImported} tickets imported successfully & {$duplicates} duplicated tickets" );
 
         } catch (\Exception $e) {
             \DB::rollBack(); // Roll back the transaction in case of error
