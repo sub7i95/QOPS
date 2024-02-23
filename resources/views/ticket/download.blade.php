@@ -13,7 +13,7 @@
     </div>
     <div class="card-body">
         <!-- END PAGE HEAD-->
-        <form class="forms form-horizontal" method="post" action="{{ url('tickets/search') }}">
+        <form class="forms form-horizontal" method="post" action="{{ url('tickets/download') }}">
             @csrf
             <div class="row">
                 <div class="col-md-4">
