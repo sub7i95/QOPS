@@ -69,14 +69,14 @@ Route::get('/tickets/qsearch', [App\Http\Controllers\TicketController::class, 'q
 Route::get('/tickets/{ticket}/show', [App\Http\Controllers\TicketController::class, 'show'])->name('tickets.show');
 Route::post('/tickets/{ticket}/delete', [App\Http\Controllers\TicketController::class, 'destroy'])->name('tickets.delete');
 Route::post('/tickets/{id}/begin', [App\Http\Controllers\TicketSurveyController::class, 'store'])->name('tickets.begin');
-Route::post('/tickets/{ticket}', [App\Http\Controllers\TicketSurveyController::class, 'update'])->name('tickets.update');
+Route::post('/tickets/{ticket}/update', [App\Http\Controllers\TicketSurveyController::class, 'update'])->name('tickets.update');
 Route::post('/tickets/{ticket}/finished', [App\Http\Controllers\TicketSurveyController::class, 'finished'])->name('tickets.finished');
 Route::post('/tickets/{ticket}/coached', [App\Http\Controllers\TicketSurveyController::class, 'coached'])->name('tickets.coached');
 
 Route::get('/tickets/download', [App\Http\Controllers\TicketDownloadController::class, 'index'])->name('tickets.download');
-Route::post('/tickets/download', [App\Http\Controllers\TicketDownloadController::class, 'download'])->name('tickets.download');
+Route::post('/tickets/download', [App\Http\Controllers\TicketDownloadController::class, 'download']);
 Route::get('/tickets/upload', [App\Http\Controllers\TicketUploadController::class, 'index'])->name('tickets.upload');
-Route::post('/tickets/upload', [App\Http\Controllers\TicketUploadController::class, 'upload'])->name('tickets.upload');
+Route::post('/tickets/upload', [App\Http\Controllers\TicketUploadController::class, 'upload']);
 
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');

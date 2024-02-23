@@ -11,6 +11,26 @@ class Ticket extends Model
 
     protected $table = 'ticket';
 
+    protected $fillable = [
+        'requester' ,
+        'group' , // Assuming this is correct
+        'ref_number' ,
+        'open_date',
+        'closed_date',
+        'service' ,
+        'priority'   ,
+        'sla_breached'  ,
+        'customer',
+        'location',
+        'reporting_method',
+        'resolver_group' ,
+        'resolution_code',
+        'cause_code' ,
+        'responsible_party',
+        'reported_by' ,
+        'closed_by' ,
+    ];
+    
     public function getStatusNameAttribute()
     {
         $statusNames = [

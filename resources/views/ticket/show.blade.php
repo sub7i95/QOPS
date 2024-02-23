@@ -19,7 +19,7 @@
         background-color: #f0f0f0;
     }
 </style>
-<form class="form" role="form" action="{{ url("tickets/{$ticket->id}") }}" method="post">
+<form class="form" role="form" action="{{ url("tickets/{$ticket->id}/update") }}" method="post">
     @csrf
     <input type="hidden" name="id" id="id" value="0">
     <div class="card mb-4">

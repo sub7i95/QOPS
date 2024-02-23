@@ -14,11 +14,7 @@
     <div class="card-body">
         <div class="row ">
             <div class="col-md-12">
-                <?php if( isset($_GET['done']) ) { ?>
-                <div class="alert alert-success">
-                    <strong>Done!</strong> Tickets have been uploaded.
-                </div>
-                <?php } ?>
+
                 <div class="row">
                     <div class="col-md-6">
                         <b>
@@ -27,17 +23,19 @@
                     </div>
                     <div class="col-md-6">
                         <b>
-                            <p>Column Order: </p>
+                            <p>Columns Order: </p>
                         </b>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <form id="fileupload" action="/upload/tickets" method="POST" enctype="multipart/form-data">
+
+                        <form action="{{ url('/tickets/upload') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="file" name="file" id="file" required class="form-control">
                             <button type="submit" class="btn btn-primary mt-2" id="btnUpload"> <i class="fa fa-upload"></i> <span id="uploadImageBtnMsg">Upload Tickets</span> </button>
                         </form>
+
                     </div>
                     <div class="col-md-6">
                         <p>
