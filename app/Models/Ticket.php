@@ -29,6 +29,8 @@ class Ticket extends Model
         'responsible_party',
         'reported_by' ,
         'closed_by' ,
+        'audit_start_date',
+        'audit_end_date'
     ];
     
     public function getStatusNameAttribute()

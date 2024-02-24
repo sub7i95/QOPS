@@ -11,7 +11,11 @@ class TicketItem extends Model
 
     protected $table = 'tickets_items';
 
+    protected $fillable = [
 
+    ];
+
+    
     static public function count( $kpi , $date, $survey, $area, $item , $group=null , $analyst=null )
     {
 

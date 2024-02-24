@@ -31,9 +31,7 @@ class DashboardController extends Controller
 
     public function index(Request $request )
     {
-
         $completedYTD = DB::table('v_ticket_score_by_area')
-            ->selectRaw('IFNULL(COUNT(ref_number), 0) AS amount')
             ->where('status', $this->status ) 
             ->whereYear('closed_date', $this->year ) 
             ->when(request()->input('service'), function ($query) {
@@ -47,13 +45,11 @@ class DashboardController extends Controller
             }, function ($query) {
                 $query->whereIn('requester', Group::ssd());
             })
-            ->first();
-
+            ->count('ref_number');
 
         $completedMTD = DB::table('v_ticket_score_by_area')
-            ->selectRaw('IFNULL(COUNT(ref_number), 0) AS amount')
-            ->where('status', $this->status) 
-            ->whereYear('closed_date', $this->year )
+            ->where('status', $this->status ) 
+            ->whereYear('closed_date', $this->year ) 
             ->whereMonth('closed_date',  $this->month )
             ->when(request()->input('service'), function ($query) {
                 $query->where('service', request()->input('service'));
@@ -66,13 +62,11 @@ class DashboardController extends Controller
             }, function ($query) {
                 $query->whereIn('requester', Group::ssd());
             })
-            ->first();
-
-
+            ->count('ref_number');
 
 
         $scoreYTD = DB::table('v_ticket_score_by_area')
-            ->selectRaw('IFNULL(FORMAT(AVG(score), 0), 0) AS score')
+          //  ->selectRaw('IFNULL(FORMAT(AVG(score), 0), 0) AS score')
             ->where('status', $this->status) // Ensure $this->status is correctly set
             ->whereYear('closed_date', $this->year) // Ensure $this->year is correctly set
             ->when(request()->input('service'), function ($query) {
@@ -86,12 +80,12 @@ class DashboardController extends Controller
             }, function ($query) {
                 $query->whereIn('requester', Group::ssd());
             })
-            ->first();
+            ->avg('score');
    
 
 
         $scoreMTD = DB::table('v_ticket_score_by_area')
-            ->selectRaw('IFNULL(FORMAT(AVG(score), 0), 0) AS score')
+           // ->selectRaw('IFNULL(FORMAT(AVG(score), 0), 0) AS score')
             ->where('status', $this->status) // Assuming $this->status is a valid status code
             ->whereYear('closed_date', $this->year ) 
             ->whereMonth('closed_date', $this->month )
@@ -106,7 +100,8 @@ class DashboardController extends Controller
             }, function ($query) {
                 $query->whereIn('requester', Group::ssd());
             })
-            ->first();
+            ->avg('score');
+            //->first();
 
 
       return view('dashboard.index')

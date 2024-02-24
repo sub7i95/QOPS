@@ -52,7 +52,7 @@
         <div class="card">
             <div class="card-body">
                 <h4>YTD Completed#</h4>
-                <span class="h2">{{ $completed_ytd->amount }}</span>
+                <span class="h2">{{ $completed_ytd }}</span>
             </div>
         </div>
     </div>
@@ -60,7 +60,7 @@
         <div class="card">
             <div class="card-body">
                 <h5>YTD Completed%</h5>
-                <span class="h2">{{ $score_ytd->score }} %</span>
+                <span class="h2">{{ $score_ytd }} %</span>
             </div>
         </div>        
     </div>
@@ -68,7 +68,7 @@
         <div class="card">
             <div class="card-body">
                 <h5>MTD Completed#</h5>
-                <span class="h2">{{ $completed_mtd->amount }}</span>
+                <span class="h2">{{ $completed_mtd }}</span>
             </div>
         </div>
     </div>
@@ -76,7 +76,7 @@
         <div class="card">
             <div class="card-body">
                 <h5>MTD Completed%</h5>
-                <span class="h2">{{ $score_mtd->score }} %</span>
+                <span class="h2">{{ $score_mtd }} %</span>
             </div>
         </div>        
     </div>    
