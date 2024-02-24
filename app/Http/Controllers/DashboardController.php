@@ -17,7 +17,7 @@ class DashboardController extends Controller
         
         $this->status   = 3 ; // completed
         $this->year     = date('Y') ;
-        $this->month    = \Request::get('date' , date('Y-m') );
+        $this->month    = \Request::get('date' , date('m') );
         $this->today    = \Request::get('date' , date('Y-m-d') );
         $this->date     = \Request::get('date' , date('Y-m') );
         $this->service  = \Request::get('service');
@@ -82,8 +82,6 @@ class DashboardController extends Controller
             })
             ->avg('score');
    
-
-
         $scoreMTD = DB::table('v_ticket_score_by_area')
            // ->selectRaw('IFNULL(FORMAT(AVG(score), 0), 0) AS score')
             ->where('status', $this->status) // Assuming $this->status is a valid status code
