@@ -188,16 +188,12 @@ document.addEventListener('DOMContentLoaded', function () {
                         label: 'Completed',
                         data: completedData,
                         backgroundColor: [
-                            // Add as many colors as you have groups/requesters
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
-                            // ... more colors for each requester
                         ],
                         borderColor: [
-                            // Add as many colors as you have groups/requesters
                             'rgba(255, 99, 132, 1)',
                             'rgba(54, 162, 235, 1)',
-                            // ... more colors for each requester
                         ],
                         borderWidth: 1
                     }]
