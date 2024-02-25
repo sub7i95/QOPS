@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const ctx = document.getElementById('pieChart').getContext('2d');
             const pieChart = new Chart(ctx, {
-                type: 'pie',
+                type: 'doughnut',
                 data: {
                     labels: labels,
                     datasets: [{
