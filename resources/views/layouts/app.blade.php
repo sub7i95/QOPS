@@ -40,8 +40,8 @@
                                 New
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href=""> PureCloud </a>
-                                <a class="dropdown-item" href=""> ALL </a>
+                                <a class="dropdown-item" href="/tickets/create/1"> PureCloud </a>
+                                <a class="dropdown-item" href="/tickets/create/4"> ALL </a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
