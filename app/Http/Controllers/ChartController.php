@@ -108,46 +108,36 @@ class ChartController extends Controller
 
 
 
-    public function pieByTeam(Request $request )
+
+    public function pieByTeam(Request $request)
     {
+        $date = $request->input('date', date('Y')); // Use the 'date' request parameter or default to the current year
+        $month = $date . '-%'; // Assuming $date is just the year part, e.g., 2021
+        $requester = $request->input('group');
+        $service = $request->input('service');
+        $parent = $request->input('parent'); // This should be provided in the request
 
+        $tickets = DB::table('v_ticket_score_by_area')
+            ->select('requester', DB::raw('IFNULL(COUNT(ref_number), 0) AS completed'))
+            ->where('status', 3)
+            ->where('closed_date', 'like', $month)
+            ->when($service, function ($query) use ($service) {
+                $query->where('service', $service);
+            })
+            ->when($requester, function ($query) use ($requester) {
+                $query->where('requester', $requester);
+            }, function ($query) use ($parent) {
+                if ($parent) {
+                    $query->whereIn('requester', (array)$parent);
+                }
+            })
+            ->groupBy('requester')
+            ->orderBy('requester')
+            ->get();
 
-        if( \Request::get('date') )
-        {
-          $date = \Request::get('date');
-        }else{
-          $date = date('Y') ;
-        }  
-
-        $requester = \Request::get('group') ;
-        $service = \Request::get('service');
-
-        $tickets = \DB::table('v_ticket_score_by_area') 
-        ->select('requester',
-            \DB::RAW(' ifnull(count(ref_number),0)  as completed ')         
-        )
-        ->where( 'status', 3 )
-        ->where( 'closed_date', 'like' , "$this->month-%" )
-        ->where( function($q)  {
-          if ( $this->service ) {
-              $q->where('service' , $this->service);
-          }
-        })          
-        ->where( function($q) {
-          if ( $this->requester ) {
-              $q->where('requester' , $this->requester );
-          }else{
-              $q->whereIn('requester' , $this->parent );
-          }
-        })
-        ->groupBy( \DB::RAW('requester') )
-        ->orderBy('requester')
-        ->get();
-        //json_decode($response->content(), true);
-
-        //return response(  $tickets , 200, [], JSON_NUMERIC_CHECK );
-        return response(  $tickets );  
+        return response()->json($tickets);
     }
+
 
 
     /**

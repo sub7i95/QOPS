@@ -82,4 +82,5 @@ Route::post('/tickets/upload', [App\Http\Controllers\TicketUploadController::cla
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
 
-Route::get('/dashboard/ssd/chart/bars/completedvsscore/bymonth', [App\Http\Controllers\ChartController::class, 'barByGroupByMonth'] );
+Route::get('/dashboard/chart/groups', [App\Http\Controllers\ChartController::class, 'barByGroupByMonth'] );
+Route::get('/dashboard/chart/pie', [App\Http\Controllers\ChartController::class, 'pieByTeam'] );

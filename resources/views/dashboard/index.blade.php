@@ -86,8 +86,7 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="text-center">Months vs Score</h5>
-               
-                <div style="width: 99%; margin: 10px auto;">
+                <div style="width: 99%; max-height: 400px!important; margin:  auto;">
                     <canvas id="barChart"></canvas>
                 </div>
             </div>
@@ -97,7 +96,9 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="text-center">Completed by Teams</h5>
-                <div id="pieChartByTeam" class="pie" align="center">loading chart...</div>
+                <div style="width: 50%; max-height: 400px!important; margin: auto;">
+                    <canvas id="pieChart"></canvas>
+                </div>
             </div>
         </div>
     </div>
@@ -112,7 +113,7 @@ var group = "{{ $group_name ? $group_name : null }}";
 var parent = "SSD";
 
 document.addEventListener('DOMContentLoaded', function () {
-    var url = "/dashboard/ssd/chart/bars/completedvsscore/bymonth";
+    var url = "/dashboard/chart/groups";
     var params = {
         year: new Date().getFullYear(), // Or set a specific year
         status: 3, // Example status
@@ -166,6 +167,57 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(error => console.error('Error fetching data:', error));
 });
 
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    const url = "/dashboard/chart/pie"; // Update this URL to the route of your pieByTeam method
+    
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const labels = data.map(item => item.requester);
+            const completedData = data.map(item => item.completed);
+
+            const ctx = document.getElementById('pieChart').getContext('2d');
+            const pieChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Completed',
+                        data: completedData,
+                        backgroundColor: [
+                            // Add as many colors as you have groups/requesters
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            // ... more colors for each requester
+                        ],
+                        borderColor: [
+                            // Add as many colors as you have groups/requesters
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            // ... more colors for each requester
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Tickets Completed by Team'
+                        }
+                    }
+                },
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+});
 </script>
 
 
