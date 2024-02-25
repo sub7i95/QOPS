@@ -209,8 +209,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             position: 'top',
                         },
                         title: {
-                            display: true,
-                            text: 'Tickets Completed by Team'
+                            display: false,
+                           // text: 'Tickets Completed by Team'
                         }
                     }
                 },
