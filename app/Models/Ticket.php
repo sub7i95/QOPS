@@ -29,6 +29,8 @@ class Ticket extends Model
         'responsible_party',
         'reported_by' ,
         'closed_by' ,
+        'audit_start_date',
+        'audit_end_date'
     ];
     
     public function getStatusNameAttribute()
@@ -75,7 +77,24 @@ class Ticket extends Model
     }
 
 
-/*    public static  function score($group, $date)
+    public function coach()
+    {
+        return $this->belongsTo( User::class, 'coached_by' );
+    }
+
+
+    
+
+    public static  function countStatus($group, $status)
+    {
+
+        $Ticket = Ticket::where('requester', $group)->where('status', $status)->get();
+
+        return $Ticket->count();
+    }
+
+
+    public static  function scores($group, $date)
     {
             switch( $group )
             {
@@ -101,12 +120,18 @@ class Ticket extends Model
                     AS `score`') 
             )
             ->join('tickets_items', 'ticket.ref_number', '=', 'tickets_items.ref_number')
-            ->whereIn( 'requester', $q )
+            ->whereIn('requester', $q)
             ->where('ticket.status', 3)
-           // ->where('audit_end_date', 'LIKE','' $date)
             ->get();
 
         return $Ticket->count();
-    }*/
+    }
 
+
+    public static  function surveyScore( $id , $date )
+    {
+
+        return 0;
+
+    }
 }

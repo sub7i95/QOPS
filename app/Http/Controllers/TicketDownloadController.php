@@ -51,11 +51,6 @@ class TicketDownloadController extends Controller
 
 
 
-    /**
-     * Download Groups by Date
-     *
-     * @return Response
-     */
     public function downloadDetails( $input )
     {
 
