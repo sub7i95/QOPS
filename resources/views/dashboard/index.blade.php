@@ -114,10 +114,10 @@ var parent = "SSD";
 
 document.addEventListener('DOMContentLoaded', function () {
     var url = "/dashboard/chart/groups";
+
     var params = {
         year: new Date().getFullYear(), // Or set a specific year
         status: 3, // Example status
-        // Include other parameters as needed: service, group, analyst
     };
 
     // Construct URL with query parameters
@@ -167,8 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(error => console.error('Error fetching data:', error));
 });
 
-</script>
-<script>
+
 document.addEventListener('DOMContentLoaded', function () {
 
     const url = "/dashboard/chart/pie"; // Update this URL to the route of your pieByTeam method
