@@ -26,7 +26,7 @@
                     <label  class="col-sm-3 control-label" for="name">Incident Owning Group :</label>
                     <div class="col-sm-8">
                       <?php $Groups = App\Models\Group::where('active', 1)->where('parent', 'SSD')->orderBy('name')->get() ?>
-                        <select name="requester" id="group" required class="form-control get-analyst-name">
+                        <select name="requester" id="group" required class="form-select get-analyst-name">
                           <option value="">-select group-</option>
                           @foreach( $Groups as $Group )
                           <option value="{{$Group->name}}">{{$Group->name}}</option>
