@@ -47,6 +47,8 @@ Route::get('/groups/create', [App\Http\Controllers\GroupController::class, 'crea
 Route::post('/groups/create', [App\Http\Controllers\GroupController::class, 'store'])->name('groups.store');
 Route::get('/groups/{id}/edit', [App\Http\Controllers\GroupController::class, 'edit'])->name('groups.edit');
 Route::post('/groups/{id}/edit', [App\Http\Controllers\GroupController::class, 'update'])->name('groups.update');
+Route::get('/groups/{name}/analysts', [App\Http\Controllers\GroupController::class, 'getAnalysts'])->name('groups.getAnalysts');
+
 
 Route::get('/surveys', [App\Http\Controllers\SurveyController::class, 'index'])->name('surveys');
 Route::get('/surveys/create', [App\Http\Controllers\SurveyController::class, 'create'])->name('surveys.create');
@@ -73,7 +75,7 @@ Route::post('/tickets/{ticket}/update', [App\Http\Controllers\TicketSurveyContro
 Route::post('/tickets/{ticket}/finished', [App\Http\Controllers\TicketSurveyController::class, 'finished'])->name('tickets.finished');
 Route::post('/tickets/{ticket}/coached', [App\Http\Controllers\TicketSurveyController::class, 'coached'])->name('tickets.coached');
 Route::get('/tickets/create/{id}', [App\Http\Controllers\TicketController::class, 'create'])->name('tickets.create');
-Route::post('/tickets/createandstart', [App\Http\Controllers\TicketController::class, 'postCreateAndStartSurvey'])->name('tickets.postCreateAndStartSurvey');
+Route::post('/tickets/createandstart', [App\Http\Controllers\TicketController::class, 'createAndStartSurvey'])->name('tickets.createAndStartSurvey');
 
 Route::get('/tickets/download', [App\Http\Controllers\TicketDownloadController::class, 'index'])->name('tickets.download');
 Route::post('/tickets/download', [App\Http\Controllers\TicketDownloadController::class, 'download']);

@@ -32,8 +32,7 @@
 -->
 
 </div>
-<!-- END PAGE HEAD-->
-<Br>
+
 
 @if($id==1)
     @include('ticket.form.create_avaya')
@@ -48,7 +47,45 @@
 
 @endsection
 @section('scripts')
+<!-- scrits-->
 <script type="text/javascript">
-//
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.get-analyst-name').addEventListener('change', function(e) {
+        e.preventDefault();
+
+        const analyst = document.querySelector('.ticket-analyst-name');
+        const groupName = this.value;
+
+        // Clear existing options and show loading message
+        analyst.innerHTML = '';
+        const loadingOption = document.createElement('option');
+        loadingOption.textContent = 'Loading...';
+        analyst.appendChild(loadingOption);
+
+        // Fetch the data from the API
+        fetch(`/groups/${groupName}/analysts`, {
+            method: 'GET',
+            cache: 'default',
+        })
+        .then(response => response.json())
+        .then(data => {
+            analyst.innerHTML = ''; // Clear the loading message
+            const defaultOption = document.createElement('option');
+            defaultOption.textContent = '- all analysts -';
+            analyst.appendChild(defaultOption);
+
+            // Populate analyst options
+            data.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.name;
+                option.textContent = item.name;
+                analyst.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+    });
+});
+
 </script>
 @endsection

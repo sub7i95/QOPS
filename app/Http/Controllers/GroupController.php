@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Group;
 use Illuminate\Http\Request;
 
+use App\Models\Analyst;
+
 class GroupController extends Controller
 {
 
@@ -25,17 +27,13 @@ class GroupController extends Controller
         ;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+ 
     public function create()
     {
         return view('group.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+ 
     public function store(Request $request)
     {
         $request->validate( [
@@ -55,26 +53,20 @@ class GroupController extends Controller
         ] , 200); 
     }
 
-    /**
-     * Display the specified resource.
-     */
+ 
     public function show(Group $group)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+ 
     public function edit(string $id)
     {
         $group = Group::find( $id );
         return view('group.edit')->with('group', $group);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+ 
     public function update(Request $request, string $id)
     {
 
@@ -99,11 +91,16 @@ class GroupController extends Controller
         ] , 200); 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+ 
     public function destroy(Group $group)
     {
         //
     }
+
+    public function getAnalysts( $name )
+    {
+        return Analyst::select('name')->where('group', $name)->distinct()->orderBy('name')->get();
+
+    }
+
 }
