@@ -39,7 +39,7 @@
                   <div class="form-group">
                     <label  class="col-sm-3 control-label" for="name">Analyst Name:</label>
                     <div class="col-sm-8">
-                        <select name="analyst_name" id="ticket-analyst-name"  class="form-control ticket-analyst-name" required>
+                        <select name="analyst_name" id="ticket-analyst-name"  class="form-select ticket-analyst-name" required>
                           <option value="">-select analyst-</option>
                         </select>
                     </div>
