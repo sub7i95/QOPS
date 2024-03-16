@@ -30,7 +30,7 @@
                         <option value="">All</option>
                         @foreach($groups as $group)
                         <option value="{{ $group->name }}" @if($group->name==$request_requester) selected @endif>{{ $group->name }}</option>
-                        @endforeach
+                        @endforeach 
                     </select>
                 </div>
                 <div class="col">

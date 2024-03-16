@@ -17,26 +17,42 @@
             <div class="row mb-2">
                 <div class="col">
                     <label>Module</label>
-                    <select class="form-select" name="module">
+                    <select class="form-select select2" name="module">
                         <option value="">All</option>
+                        <?php $services = App\Models\Service::select('name')->where('active',1)->orderBy('name')->get() ?>
+                        @foreach($services as $service )
+                                <option value="{{ $service->name }}" @if( $service->name==$service_name ) selected @endif >{{ $service->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="col">
                     <label>Requester</label>
-                    <select class="form-select" name="requester">
+                    <select class="form-select select2" name="requester">
                         <option value="">All</option>
+                        <?php $groups = App\Models\Group::select('name')->where('active',1)->orderBy('name')->get() ?>
+                        @foreach($groups as $group)
+                        <option value="{{ $group->name }}" @if($group->name==$group_name) selected @endif>{{ $group->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="col">
                     <label>Group</label>
-                    <select class="form-select" name="group">
+                    <select class="form-select select2" name="group">
                         <option value="">All</option>
+                        <?php $groups = App\Models\Group::select('name')->where('active',1)->orderBy('name')->get() ?>
+                        @foreach($groups as $group )
+                            <option value="{{ $group->name }}" <?php if($group_name==$group->name) echo 'selected' ?> >{{ $group->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="col">
                     <label>Date</label>
-                    <select class="form-select" name="group">
+                    <select class="form-select" name="date">
                         <option value="">All</option>
+                        <?php  $dates = App\Models\Dates::where('active',1)->get(); ?>
+                        @foreach( $dates as $d)
+                        <option value="{{$d->yymm}}" @if($date==$d->yymm) selected @endif >{{$d->yymm}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="col">
