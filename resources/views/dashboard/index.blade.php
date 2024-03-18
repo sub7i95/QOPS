@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="card-body">
-        <form name="" method="post" action="{{ url('dashbaord') }}">
+        <form name="" method="get" action="{{ url('dashboard') }}">
             @csrf
             <div class="row mb-2">
                 <div class="col">
@@ -28,8 +28,7 @@
                     <label>Requester</label>
                     <select class="form-select select2" name="requester">
                         <option value="">All</option>
-                        <?php $groups = App\Models\Group::select('name')->where('active',1)->orderBy('name')->get() ?>
-                        @foreach($groups as $group)
+                        @foreach($allGroups as $group)
                         <option value="{{ $group->name }}" @if($group->name==$group_name) selected @endif>{{ $group->name }}</option>
                         @endforeach
                     </select>
@@ -38,8 +37,7 @@
                     <label>Group</label>
                     <select class="form-select select2" name="group">
                         <option value="">All</option>
-                        <?php $groups = App\Models\Group::select('name')->where('active',1)->orderBy('name')->get() ?>
-                        @foreach($groups as $group )
+                        @foreach($allGroups as $group )
                             <option value="{{ $group->name }}" <?php if($group_name==$group->name) echo 'selected' ?> >{{ $group->name }}</option>
                         @endforeach
                     </select>
@@ -48,8 +46,7 @@
                     <label>Date</label>
                     <select class="form-select" name="date">
                         <option value="">All</option>
-                        <?php  $dates = App\Models\Dates::where('active',1)->get(); ?>
-                        @foreach( $dates as $d)
+                        @foreach( $allDate as $d)
                         <option value="{{$d->yymm}}" @if($date==$d->yymm) selected @endif >{{$d->yymm}}</option>
                         @endforeach
                     </select>
