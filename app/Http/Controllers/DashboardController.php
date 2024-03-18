@@ -8,6 +8,7 @@ use App\Models\Ticket;
 use App\Models\User;
 use App\Models\Group;
 use App\Models\Service;
+use App\Models\Dates;
 
 class DashboardController extends Controller
 {
@@ -115,8 +116,8 @@ class DashboardController extends Controller
             ->with('group_name', $this->group )
             ->with('analyst_name', $this->analyst )
             ->with('allServices', Service::select('name')->where('active',1)->orderBy('name')->get()  )
-
-      
+            ->with('allGroups', Group::select('name')->where('active',1)->orderBy('name')->get()  )
+            ->with('allDate',  Dates::where('active',1)->get()  )     
       ;        
 
     }
