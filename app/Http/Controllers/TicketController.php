@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 use App\Models\Analyst;
 use App\Models\User;
@@ -201,7 +202,7 @@ class TicketController extends Controller
         }
 
         if( ! $request->ref_number ) {
-            $request->ref_number = str_random(8);;
+            $request->ref_number = Str::random(10);
         }
 
         $Ticket = new Ticket;
@@ -290,7 +291,6 @@ class TicketController extends Controller
         $sccGroups = Group::where('active', 1)->orderBy('name')->get();
         
         $score = Ticket::select() //_vtickets
-        //->select(  'score' ,'score_ssd'  )
         ->where('id', $ticket->id)
         ->first() ;   
 
@@ -304,8 +304,6 @@ class TicketController extends Controller
         ->with('score', $score)
         ;
     }
-
-
 
 
     public function qsearch( Request $request  )
