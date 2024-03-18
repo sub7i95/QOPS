@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Ticket;
 use App\Models\User;
 use App\Models\Group;
+use App\Models\Service;
 
 class DashboardController extends Controller
 {
@@ -102,17 +103,20 @@ class DashboardController extends Controller
             //->first();
 
 
-      return view('dashboard.index')
-      ->with('date', $this->date )
-      ->with('completed_mtd', $completedMTD )
-      ->with('completed_ytd', $completedYTD )
-      ->with('score_ytd', $scoreYTD )
-      ->with('score_mtd', $scoreMTD )
-      ->with('ssdGroups', $this->requesters )
-      ->with('service_name', $this->service )
-      ->with('customer_name', $this->customer )
-      ->with('group_name', $this->group )
-      ->with('analyst_name', $this->analyst )
+        return view('dashboard.index')
+            ->with('date', $this->date )
+            ->with('completed_mtd', $completedMTD )
+            ->with('completed_ytd', $completedYTD )
+            ->with('score_ytd', $scoreYTD )
+            ->with('score_mtd', $scoreMTD )
+            ->with('ssdGroups', $this->requesters )
+            ->with('service_name', $this->service )
+            ->with('customer_name', $this->customer )
+            ->with('group_name', $this->group )
+            ->with('analyst_name', $this->analyst )
+            ->with('allServices', Service::select('name')->where('active',1)->orderBy('name')->get()  )
+
+      
       ;        
 
     }

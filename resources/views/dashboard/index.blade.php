@@ -19,9 +19,8 @@
                     <label>Module</label>
                     <select class="form-select select2" name="module">
                         <option value="">All</option>
-                        <?php $services = App\Models\Service::select('name')->where('active',1)->orderBy('name')->get() ?>
-                        @foreach($services as $service )
-                                <option value="{{ $service->name }}" @if( $service->name==$service_name ) selected @endif >{{ $service->name }}</option>
+                        @foreach($allServices as $service )
+                            <option value="{{ $service->name }}" @if( $service->name==$service_name ) selected @endif >{{ $service->name }}</option>
                         @endforeach
                     </select>
                 </div>
