@@ -76,7 +76,7 @@ class TicketController extends Controller
         })            
         ->with(['survey'])
         ->distinct()
-        ->take(10000)
+        ->take(1000)
         ->orderBy('open_date', 'desc')
         ->get()
         ;
