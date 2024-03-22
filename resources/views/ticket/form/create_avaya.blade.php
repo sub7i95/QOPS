@@ -2,6 +2,9 @@
 @section('content')
 @include('ticket.header')
 <div class="card">
+    <div class="card-header">
+        <i class="fa-solid fa-ticket me-2" aria-hidden="true"></i> Tickets / Create
+    </div>
     <div class="card-body">
         <form name="form-ticket-create" id="form-ticket-create" class="form form-horizontal " role="form" action="{{ url('/tickets/createandstart') }}" method="post">
             {!! csrf_field() !!}

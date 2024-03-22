@@ -3,7 +3,7 @@
 @include('user.header')
     <div class="card">
         <div class="card-header">
-            Create Username
+            <i class="fa-solid fa-users me-2"></i> Users / Create
         </div>
         <div class="card-body">
 

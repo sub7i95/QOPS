@@ -3,7 +3,7 @@
 @include('user.header')
 <div class="card">
     <div class="card-header">
-        Edit
+        <i class="fa-solid fa-users me-2"></i> Users / Edit
     </div>
     <div class="card-body">
         <form class="form" method="post">
