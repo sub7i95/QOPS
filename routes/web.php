@@ -33,6 +33,7 @@ Route::post('/users/create', [App\Http\Controllers\UserController::class, 'store
 Route::get('/users/{user}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
 Route::post('/users/{user}/edit', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
 Route::post('/users/{user}/delete', [App\Http\Controllers\UserController::class, 'delete'])->name('users.delete');
+Route::post('/users/{user}/password', [App\Http\Controllers\UserController::class, 'password'])->name('users.password');
 
 Route::get('/analysts', [App\Http\Controllers\AnalystController::class, 'index'])->name('analysts');
 Route::get('/analysts/{analyst}/edit', [App\Http\Controllers\AnalystController::class, 'edit'])->name('analysts.edit');
@@ -64,7 +65,7 @@ Route::post('/services/{id}/edit', [App\Http\Controllers\ServiceController::clas
 
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
 Route::post('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
-Route::post('/profile/password', [App\Http\Controllers\ProfileController::class, 'updatePassword'])->name('profile.update.password');
+Route::post('/profile/password', [App\Http\Controllers\ProfileController::class, 'password'])->name('profile.update.password');
 
 Route::get('/tickets', [App\Http\Controllers\TicketController::class, 'index'])->name('tickets');
 Route::get('/tickets/qsearch', [App\Http\Controllers\TicketController::class, 'qsearch'])->name('qsearch');

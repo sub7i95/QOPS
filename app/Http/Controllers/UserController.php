@@ -18,7 +18,6 @@ class UserController extends Controller
     {
         $users = User::select('users.*', 'roles.name as role')
         ->join('roles', 'roles.id', '=', 'users.role_id')
-        //->simplePaginate() /// removed this to use datatables JS in the html
         ->get();
 
         return view('user.index')
@@ -66,9 +65,8 @@ class UserController extends Controller
     {
         $request->validate( [
             'first_name'=> 'required|max:255',
-            'last_name' => 'required|max:255',
-            //'email'     => 'required|email|max:255',         
-            ]);
+            'last_name' => 'required|max:255',       
+        ]);
 
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
@@ -81,6 +79,19 @@ class UserController extends Controller
         return redirect()->back()->with('message', 'Information saved successfully'); 
     }
 
+
+
+    public function password(Request $request, User $user )
+    {
+        $request->validate( [
+            'password'=> 'required|min:8|confirmed',     
+        ]);
+
+        $user->password = \Hash::make($request->password) ;
+        $user->save();
+
+        return redirect()->back()->with('message', 'Information saved successfully'); 
+    }
 
     public function destroy( User $user )
     {

@@ -34,17 +34,10 @@ class ProfileController extends Controller
         //$user->email = request('email');
         $user->save();
 
-        $request->session()->flash('success', 'Information was saved successfully.');
-
-        return redirect()->back(); // Redirect back to the form
-
-        return response( [ 
-            'ok'    => true, 
-            'data'  => $user 
-        ] , 200); 
+       return redirect()->back()->with('message', 'Information saved successfully');
     }
 
-    public function updatePassword(Request $request)
+    public function password(Request $request)
     {
         $request->validate([
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -52,13 +45,8 @@ class ProfileController extends Controller
 
         $user = User::find( auth()->user()->id );
         $user->password = Hash::make($request->password);
-     //   return Hash::make($request->password);
         $user->save();
 
-        $request->session()->flash('success', 'Password updated successfully.');
-
-        // Since you're flashing a success message and redirecting back,
-        // you don't need to return a response here.
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Information saved successfully');
     }
 }
