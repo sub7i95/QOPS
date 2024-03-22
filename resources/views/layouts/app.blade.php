@@ -67,9 +67,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('analysts') }}"> {{ __('Analysts') }}</a>
                         </li>
+                       
+                        @if( auth()->user()->role_id==1)
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/users') }}">{{ __('Users') }}</a>
                         </li>
+                        @endif
                         @endguest
                     </ul>
                     <!-- Right Side Of Navbar -->
