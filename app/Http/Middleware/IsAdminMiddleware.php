@@ -16,10 +16,9 @@ class IsAdminMiddleware
     public function handle(Request $request, Closure $next) : Response
     {
         // Check if the user is authenticated and not an admin
-        if (auth()->check() && auth()->user()->role_id > 1) {
-            abort(403 , 'Unauthorized ! This is only for admin'  );
+        if (auth()->check() && ( auth()->user()->role_id == 1 OR auth()->user()->role_id == 5 ) ) {
+            return $next($request);
         }
-
-        return $next($request);
+        abort(403 , 'Unauthorized ! This is only for admin'  );
     }    
 }

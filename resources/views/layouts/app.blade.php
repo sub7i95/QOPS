@@ -52,9 +52,12 @@
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ url('tickets') }}"> <i class="fa-solid fa-border-all me-1"></i> All </a>
                                 <a class="dropdown-item" href="{{ url('tickets/download') }}"><i class="fa-solid fa-download me-1"></i> Download </a>
+                                @if( auth()->user()->role_id==1 OR auth()->user()->role_id==5)
                                 <a class="dropdown-item" href="{{ url('tickets/upload') }}"> <i class="fa-solid fa-upload me-1"></i> Upload </a>
+                                @endif
                             </div>
                         </li>
+                        @if( auth()->user()->role_id==1 OR auth()->user()->role_id==5)
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('surveys') }}">{{ __('Surveys') }}</a>
                         </li>
@@ -68,7 +71,6 @@
                             <a class="nav-link" href="{{ url('analysts') }}"> {{ __('Analysts') }}</a>
                         </li>
                        
-                        @if( auth()->user()->role_id==1)
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/users') }}">{{ __('Users') }}</a>
                         </li>

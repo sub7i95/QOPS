@@ -11,6 +11,7 @@ class AnalystController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('isAdmin');
     }
 
     public function qsearch(Request $request)
