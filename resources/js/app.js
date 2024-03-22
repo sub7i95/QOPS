@@ -5,7 +5,6 @@ import './bootstrap';
 //DataTables
 import DataTable from 'datatables.net-dt';
 
-
 document.addEventListener('DOMContentLoaded', function() {
     //datatables
     let tableElement = document.querySelector('.dt');
@@ -13,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
         pageLength: 50
     });
 });
-
 
 document.addEventListener('DOMContentLoaded', function() {
     // Select all forms with the class 'form'
@@ -37,3 +35,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    var footerHTML = `
+        <footer class="p-4" id="customFooter">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    ${new Date().getFullYear()} - Developed by Javier Ciocci
+                </div>
+            </div>
+        </footer>`;
+    document.getElementById('content').insertAdjacentHTML('afterend', footerHTML);
+});

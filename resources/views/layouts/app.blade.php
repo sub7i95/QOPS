@@ -70,7 +70,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('analysts') }}"> {{ __('Analysts') }}</a>
                         </li>
-                       
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/users') }}">{{ __('Users') }}</a>
                         </li>
@@ -117,7 +116,7 @@
                 </div>
             </div>
         </nav>
-        <main class="p-4">
+        <main class="p-4" id="content">
             @yield('content')
         </main>
     </div>
@@ -128,6 +127,10 @@
     $(function() {
         $(".select2").selectize([]);
     });
+    </script>
+    <script>
+
+
     </script>
     @yield('scripts')
 </body>
