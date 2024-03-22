@@ -18,11 +18,13 @@
 </head>
 <style type="text/css">
 .login-image {
-    background-image: url(/images/bg3.jpg)!important;
-    background-size: cover!important;
-    min-height: 100vh!important;
-}    
+    background-image: url(/images/bg3.jpg) !important;
+    background-size: cover !important;
+    min-height: 100vh !important;
+}
+
 </style>
+
 <body class="antialiased">
     <div class="container-fluid">
         <div class="row">
@@ -72,15 +74,15 @@
                             <button type="submit" class="btn btn-primary w-100">{{ __('Login') }}</button>
                         </div>
                     </div>
-                    <!--                         <div class="row mb-0">
-                            <div class="col-md-12">
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div> -->
+                    <div class="row mb-0">
+                        <div class="col-md-12">
+                            @if (Route::has('password.request'))
+                            <a class="btn btn-link" href="{{ route('password.request') }}">
+                                {{ __('Forgot Your Password?') }}
+                            </a>
+                            @endif
+                        </div>
+                    </div>
                 </form>
                 <!-- end login form -->
             </div>
