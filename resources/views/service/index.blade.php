@@ -8,8 +8,8 @@
                 <i class="fa-solid fa-book-open-reader me-2"></i> Modules
             </div>
             <div class="col-md-6 d-flex justify-content-end">
-                <a class="btn btn-primary btn-user-add" href="/services/create">
-                    <i class="fa-solid fa-plus me-1"></i> Add New
+                <a class="btn btn-primary btn-sm" href="/services/create">
+                    <i class="fa-solid fa-plus me-1"></i>  Create
                 </a>
             </div>
         </div>

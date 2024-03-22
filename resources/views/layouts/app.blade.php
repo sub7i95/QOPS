@@ -128,10 +128,6 @@
         $(".select2").selectize([]);
     });
     </script>
-    <script>
-
-
-    </script>
     @yield('scripts')
 </body>
 

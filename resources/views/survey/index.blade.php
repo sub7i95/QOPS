@@ -8,8 +8,8 @@
                 <i class="fa-solid fa-puzzle-piece me-2"></i> Surveys
             </div>
             <div class="col-md-6 d-flex justify-content-end">
-                <a class="btn btn-primary btn-user-add" href="/surveys/create">
-                    <i class="fa-solid fa-plus me-1"></i> Add New
+                <a class="btn btn-primary btn-sm" href="/surveys/create">
+                    <i class="fa-solid fa-plus me-1"></i>  Create
                 </a>
             </div>
         </div>
