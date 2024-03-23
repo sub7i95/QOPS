@@ -85,11 +85,11 @@
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @endif
-                        @if (Route::has('register'))
+                       <!-- @if (Route::has('register'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
-                        @endif
+                        @endif -->
                         @else
                         <form class="navbar-form navbar-left" action="{{ url('/tickets/qsearch') }} ">
                             <input type="search" class="form-control " placeholder="Search...." name="q" required>
