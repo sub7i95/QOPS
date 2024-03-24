@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <footer class="p-4" id="customFooter">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    ${new Date().getFullYear()} - Developed by Applications CoE
+                    Copyright © SITA ${new Date().getFullYear()}. All rights reserved.
                 </div>
             </div>
         </footer>`;

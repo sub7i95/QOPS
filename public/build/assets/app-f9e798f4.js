@@ -22,7 +22,7 @@ var qe="top",rt="bottom",it="right",Ue="left",Pi="auto",er=[qe,rt,it,Ue],bn="sta
         <footer class="p-4" id="customFooter">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    ${new Date().getFullYear()} - Developed by Applications CoE
+                    Copyright © SITA ${new Date().getFullYear()}. All rights reserved.
                 </div>
             </div>
         </footer>`;document.getElementById("content").insertAdjacentHTML("afterend",e)});
