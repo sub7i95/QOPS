@@ -35,7 +35,7 @@
                         <td><a href="/surveys/{{$survey->id}}/edit">Edit</a></td>
                         <td>{{$survey->id}}</td>
                         <td>{{$survey->name}}</td>
-                        <td>{{$survey->owner}}</td>
+                        <td>{{ $survey->first_name }} {{ $survey->last_name }}</td>
                         <td>{{$survey->process}}</td>
                         <td>
                             @if ($survey->active == 1)

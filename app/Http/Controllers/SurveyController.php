@@ -17,7 +17,10 @@ class SurveyController extends Controller
         
     public function index(Request $request )
     {
-        return view('survey.index')->with('surveys', Survey::orderBy('name')->get());
+        return view('survey.index')->with('surveys', Survey::select('survey.*', 'users.first_name', 'users.last_name')
+        ->orderBy('survey.name')
+        ->leftJoin('users', 'survey.owner_id', '=', 'users.id')
+        ->get());
     }
 
     public function create()

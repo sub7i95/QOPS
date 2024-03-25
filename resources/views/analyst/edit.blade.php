@@ -22,6 +22,12 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-sm-3 control-label" for="group">Group</label>
+                    <div class="col-sm-8">
+                        <input type="group" class="form-control" placeholder="group" name="group" id="group" value="{{$analyst->group}}" />
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-sm-3 control-label" for="location">Location</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" placeholder="location" name="location" id="location" value="{{$analyst->location}}" />

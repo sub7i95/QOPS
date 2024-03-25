@@ -85,6 +85,7 @@ class AnalystController extends Controller
         $analyst->name = $request->name;
         $analyst->location = $request->location;
         $analyst->email = \Str::lower( $request->email );
+        $analyst->group = $request->group;
         $analyst->active = $request->active;
         $analyst->save();
 

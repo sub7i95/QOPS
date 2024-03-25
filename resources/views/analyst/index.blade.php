@@ -23,6 +23,7 @@
                 <th> ID </th>
                 <th> Name </th>
                 <th> Email </th>
+                <th> Group </th>
                 <th> Location </th>
                 <th> Status </th>
             </tr>
@@ -34,6 +35,7 @@
                     <td>{{$analyst->id}}</td>
                     <td>{{$analyst->name}}</td>
                     <td>{{$analyst->email}}</td>
+                    <td>{{$analyst->group}}</td>
                     <td>{{$analyst->location}}</td>
                     <td>
                         @if ($analyst->active == 1)
