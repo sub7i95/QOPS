@@ -54,6 +54,7 @@
   </div>
 </div>
 
+@include('survey.modal.edit')
 @endsection
 
 @section('scripts')

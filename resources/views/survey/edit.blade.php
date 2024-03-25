@@ -123,8 +123,7 @@
 @include('survey.modal.area_item')
 @endsection
 @section('scripts')
-<script type="text/javascript">
-//
-
-</script>
+<script src="{{ asset('build/assets/survey.js') }}"></script>
+<script src="{{ asset('build/assets/survey_area.js') }}"></script>
+<script src="{{ asset('build/assets/survey_item.js') }}"></script>
 @endsection

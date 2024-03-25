@@ -62,6 +62,20 @@ Route::post('/surveys/create', [App\Http\Controllers\SurveyController::class, 's
 Route::get('/surveys/{survey}/edit', [App\Http\Controllers\SurveyController::class, 'edit'])->name('surveys.edit');
 Route::post('/surveys/{id}/edit', [App\Http\Controllers\SurveyController::class, 'update'])->name('surveys.update');
 
+//survey areas
+Route::get('/surveys/{sid}/areas', [App\Http\Controllers\SurveyAreaController::class, 'index'])->name('surveys.areas.index');
+Route::post('/surveys/{sid}/areas', [App\Http\Controllers\SurveyAreaController::class, 'store'])->name('surveys.areas.store');
+Route::get('/surveys/{sid}/areas/{aid}', [App\Http\Controllers\SurveyAreaController::class, 'edit'])->name('surveys.areas.edit');
+Route::post('/surveys/{survey}/areas/{id}', [App\Http\Controllers\SurveyAreaController::class, 'update'])->name('surveys.areas.update');
+Route::delete('api/v1/area/{id}', [App\Http\Controllers\SurveyAreaController::class, 'destroy'])->name('surveys.areas.destroy');
+
+//surveys_items
+Route::get('/surveys/{sid}/items', [App\Http\Controllers\SurveyItemController::class, 'index'])->name('surveys.items.index');
+Route::post('/surveys/{sid}/items', [App\Http\Controllers\SurveyItemController::class, 'store'])->name('surveys.items.store');
+Route::get('/api/v1/surveys/{sid}/items/{idd}', [App\Http\Controllers\SurveyItemController::class, 'show'])->name('surveys.items.show');
+Route::put('/surveys/{sid}/items/{idd}', [App\Http\Controllers\SurveyItemController::class, 'update'])->name('surveys.items.update');
+Route::delete('/api/v1/items/{id}', [App\Http\Controllers\SurveyItemController::class, 'destroy'])->name('surveys.items.destroy');
+
 Route::get('/services', [App\Http\Controllers\ServiceController::class, 'index'])->name('services');
 Route::get('/services/create', [App\Http\Controllers\ServiceController::class, 'create'])->name('services.create');
 Route::post('/services/create', [App\Http\Controllers\ServiceController::class, 'store'])->name('services.store');

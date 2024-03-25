@@ -14,6 +14,10 @@
     <script src="https://kit.fontawesome.com/8aea7295a5.js" crossorigin="anonymous"></script>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/css/selectize.bootstrap5.css" />
+    <script type="text/javascript">
+    var domain = "{{ url('/') }}";
+    var api    = "{{ url('/api/v1') }}";
+    </script>
 </head>
 
 <body>
