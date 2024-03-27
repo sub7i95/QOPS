@@ -29,6 +29,7 @@
     
         $totalWeight = $totalWeight + $item->weight; 
         $totalScore = $totalScore + $item->score; 
+        $score = ($totalWeight > 0) ? number_format(($totalScore / $totalWeight) * 100) : 'n/a';
 
         ?>
     <tr>
@@ -40,9 +41,11 @@
         <tr>
             <th class="col-md-4"> Total </th>
             <th class="col-md-4">
-                @if($totalScore>0)
-                <B> {{ $score->score }}%</B>
-                @endif
+                    @if ($score == 'n/a')
+                        n/a
+                    @else
+                        {{ $score }}%
+                    @endif
             </th>
         </tr>
         <tfooter>

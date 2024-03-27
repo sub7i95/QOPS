@@ -28,6 +28,45 @@
             </thead>
             <tbody>
                 @foreach( $tickets as $ticket)
+
+                    <!-- -->
+                    @if( $ticket->status > 1 )
+                    <?php 
+                        $areas = App\Models\TicketArea::where('ref_number', $ticket->ref_number )
+                        ->orderBy('position')
+                        ->get()
+                    ?>
+                        <?php 
+                        $totalScore = 0; 
+                        $totalWeight =0;
+                        ?>
+                        @foreach( $areas as $area )
+                        <?php 
+
+                            $item = App\Models\TicketItem::select( 
+                                DB::raw(" IFNULL( Sum(`tickets_items`.`weight` * 1 ) ,0)  AS full_score "  ),
+                                DB::raw(" IFNULL( Sum(`tickets_items`.`weight` * `tickets_items`.`score`) ,0)  AS score "  ),
+                                DB::raw(" IFNULL( Sum(`tickets_items`.`weight` ) ,0)  AS weight "  )            )
+                                ->where('ref_number', $ticket->ref_number )
+                                ->where('area_id', $area->area_id )
+                                ->where('is_applicable', 1) //only the Yes/No activities
+                                ->first() ;
+                        
+                            $totalWeight = $totalWeight + $item->weight; 
+                            $totalScore = $totalScore + $item->score; 
+                            //$score = number_format(($totalScore / $totalWeight) * 100);
+                            $score = ($totalWeight > 0) ? number_format(($totalScore / $totalWeight) * 100) : 'n/a';
+
+                            ?>
+                                @endforeach
+                    @endif
+                    @if ($ticket->status ==1)
+                    <?php
+                    $score = 0
+                    ?>
+                    @endif
+                    <!-- -->
+
                 <tr>
                     <td><a href="/tickets/{{ $ticket->id }}/show" class=""><i class="icon-eye"></i> View</a></td>
                     <td> {{ $ticket->ref_number }} </td>
@@ -37,7 +76,13 @@
                     <td> {{ $ticket->reported_by }} </td>
                     <td> {{ $ticket->priority }} </td>
                     <td> {{ $ticket->status_name }} </td>
-                    <td> {{ $ticket->score }} </td>
+                    <td>
+                        @if ($score == 'n/a')
+                            n/a
+                        @else
+                            {{ $score }}%
+                        @endif
+                    </td>                
                 </tr>
                 @endforeach
             </tbody>

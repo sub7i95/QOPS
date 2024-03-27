@@ -94,7 +94,7 @@ class Ticket extends Model
     }
 
 
-    public static  function scores($group, $date)
+    public static  function scores($group)
     {
             switch( $group )
             {

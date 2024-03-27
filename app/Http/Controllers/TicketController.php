@@ -291,9 +291,14 @@ class TicketController extends Controller
         
         $sccGroups = Group::where('active', 1)->orderBy('name')->get();
         
-        $score = Ticket::select() //_vtickets
+        //$score = Ticket::select() //_vtickets
+        //->select(  'score' ,'score_ssd'  )
+        //->where('id', $ticket->id)
+        //->first() ;  
+
+        $score = Ticket::select()
         ->where('id', $ticket->id)
-        ->first() ;   
+        ->first();
 
         return view('ticket.show')
         ->with('users', $users )
