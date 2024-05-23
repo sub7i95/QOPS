@@ -96,6 +96,8 @@ Route::post('/tickets/{ticket}/finished', [App\Http\Controllers\TicketSurveyCont
 Route::post('/tickets/{ticket}/coached', [App\Http\Controllers\TicketSurveyController::class, 'coached'])->name('tickets.coached');
 Route::get('/tickets/create/{id}', [App\Http\Controllers\TicketController::class, 'create'])->name('tickets.create');
 Route::post('/tickets/createandstart', [App\Http\Controllers\TicketController::class, 'createAndStartSurvey'])->name('tickets.createAndStartSurvey');
+Route::post('/tickets/{ticket_id}/store', [App\Http\Controllers\TicketController::class, 'store'])->name('tickets.store');
+Route::get('/tickets/{ticket_id}/store', [App\Http\Controllers\TicketController::class, 'store'])->name('tickets.store');
 
 Route::get('/tickets/download', [App\Http\Controllers\TicketDownloadController::class, 'index'])->name('tickets.download');
 Route::post('/tickets/download', [App\Http\Controllers\TicketDownloadController::class, 'download']);
