@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- <title>{{ config('app.name', 'Qops') }}</title> -->
     <title>QOPS | Quality Operations</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url('/images/logo.svg') }}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url('/images/download1.svg') }}" />
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -25,7 +25,7 @@
         <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/dashboard') }}">
-                    <img src="{{ url('/images/logo.svg') }}" alt="" title="" height="35">
+                    <img src="{{ url('/images/download.svg') }}" alt="" title="" height="35">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

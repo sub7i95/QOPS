@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>QOPS | Quality Operations</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url('/images/logo.svg') }}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url('/images/download1.svg') }}" />
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -16,7 +16,7 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     <style>
         .login-image {
-    background-image: url(/images/bg3.jpg)!important;
+    background-image: url(/images/bg4.jpg)!important;
     background-size: cover!important;
     min-height: 100vh!important;
 }   
@@ -32,7 +32,7 @@
                     @csrf
                     <div class="row mb-5 text-center">
                         <div class="col-md-12">
-                            <img src="{{ url('/images/logo.svg') }}" alt="" title="" height="35" class="">
+                            <img src="{{ url('/images/download1.svg') }}" alt="" title="" height="35" class="">
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -85,7 +85,7 @@
                 <!-- end login form -->
             </div>
             <div class="col-md-6 login-image">
-                <img src="{{ url('/images/logo.svg') }}" alt="" title="" height="35" class="text-white" style="position:absolute; top:10px; right:10px; color: #fff;">
+                <img src="{{ url('/images/download1.svg') }}" alt="" title="" height="35" class="text-white" style="position:absolute; top:10px; right:10px; color: #fff;">
             </div>
         </div>
     </div>

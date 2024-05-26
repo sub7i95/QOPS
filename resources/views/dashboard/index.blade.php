@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         label: 'Score',
                         data: scoreData,
                         type: 'line',
-                        borderColor: 'rgb(54, 162, 235)',
+                        borderColor: 'rgb(50, 168, 82)',
                         fill: false,
                         tension: 0.1, // Smooth the line
                     }]
@@ -200,11 +200,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         data: completedData,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(50, 168, 82)',
                         ],
                         borderColor: [
                             'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
+                            'rgba(50, 168, 82)',
                         ],
                         borderWidth: 1
                     }]
